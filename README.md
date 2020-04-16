@@ -1,3 +1,3 @@
 
 
-For details, please see https://yiwenc22.github.io/digits/
+For details, please see http://bowfolios.github.io.

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="cd609720-ee5a-493c-bfd5-5ac4aff480d4" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1ados4Og0TxcKIlzAVes0kf9a3v" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/config" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="Console" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\yiwen\OneDrive\Documents\GitHub\manoa-musicbuds-source\config" />
+      <recent name="C:\Users\yiwen\OneDrive\Documents\GitHub\my-bowfolios\app\public\images" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\yiwen\OneDrive\Documents\GitHub\my-bowfolios\app\public\images" />
+    </key>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cd609720-ee5a-493c-bfd5-5ac4aff480d4" name="Default Changelist" comment="" />
+      <created>1587075034249</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1587075034249</updated>
+      <workItem from="1587075037090" duration="251000" />
+      <workItem from="1587076925655" duration="1203000" />
+      <workItem from="1587078433720" duration="5334000" />
+      <workItem from="1587107002759" duration="6837000" />
+      <workItem from="1587501868059" duration="81000" />
+      <workItem from="1587711538771" duration="37000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="708" y="241" key="FileChooserDialogImpl" timestamp="1587711561310">
+      <screen x="0" y="0" width="1857" height="1080" />
+    </state>
+    <state x="708" y="241" key="FileChooserDialogImpl/0.0.1857.1080@0.0.1857.1080" timestamp="1587711561310" />
+    <state width="1813" height="295" key="GridCell.Tab.0.bottom" timestamp="1587117826388">
+      <screen x="0" y="0" width="1856" height="1080" />
+    </state>
+    <state width="1813" height="295" key="GridCell.Tab.0.bottom/0.0.1856.1080@0.0.1856.1080" timestamp="1587117826388" />
+    <state width="1813" height="295" key="GridCell.Tab.0.center" timestamp="1587117826388">
+      <screen x="0" y="0" width="1856" height="1080" />
+    </state>
+    <state width="1813" height="295" key="GridCell.Tab.0.center/0.0.1856.1080@0.0.1856.1080" timestamp="1587117826388" />
+    <state width="1813" height="295" key="GridCell.Tab.0.left" timestamp="1587117826388">
+      <screen x="0" y="0" width="1856" height="1080" />
+    </state>
+    <state width="1813" height="295" key="GridCell.Tab.0.left/0.0.1856.1080@0.0.1856.1080" timestamp="1587117826388" />
+    <state width="1813" height="295" key="GridCell.Tab.0.right" timestamp="1587117826388">
+      <screen x="0" y="0" width="1856" height="1080" />
+    </state>
+    <state width="1813" height="295" key="GridCell.Tab.0.right/0.0.1856.1080@0.0.1856.1080" timestamp="1587117826388" />
+    <state x="593" y="244" key="NewModule_or_Project.wizard" timestamp="1587711569684">
+      <screen x="0" y="0" width="1857" height="1080" />
+    </state>
+    <state x="593" y="244" key="NewModule_or_Project.wizard/0.0.1857.1080@0.0.1857.1080" timestamp="1587711569684" />
+  </component>
+</project>
