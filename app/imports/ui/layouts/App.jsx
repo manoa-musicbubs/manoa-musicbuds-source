@@ -7,36 +7,45 @@ import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
-import MusicBuds from '../pages/MusicBuds';
-import Profile from '../pages/Profile';
-import Explore from '../pages/Explore';
+import Home from '../pages/Home';
+import Profiles from '../pages/Profiles';
+import Lucky from '../pages/Lucky';
+import AddProject from '../pages/AddProject';
+import Projects from '../pages/Projects';
+import Filter from '../pages/Filter';
+import Interests from '../pages/Interests';
 import NotFound from '../pages/NotFound';
 import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
-import ListContactAdmin from '../pages/ListContactAdmin';
+
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
   render() {
     return (
-        <Router>
-          <div>
-            <NavBar/>
+      <Router>
+        <div>
+          <NavBar/>
+          <div style={{ paddingTop: '20px', paddingBottom: '30px' }}>
             <Switch>
               <Route exact path="/" component={Landing}/>
+              <ProtectedRoute path="/home" component={Home}/>
+              <Route path="/profiles" component={Profiles}/>
+              <Route path="/projects" component={Projects}/>
+              <Route path="/lucky" component={Lucky}/>
+              <Route path="/interests" component={Interests}/>
+              <ProtectedRoute path="/addproject" component={AddProject}/>
+              <ProtectedRoute path="/filter" component={Filter}/>
               <Route path="/signin" component={Signin}/>
               <Route path="/signup" component={Signup}/>
-              <ProtectedRoute path="/Explore" component={Explore}/>
-              <ProtectedRoute path="/MusicBuds" component={MusicBuds}/>
-              <ProtectedRoute path="/Profile" component={Profile}/>
-              <AdminProtectedRoute path="/admin" component={ListContactAdmin}/>
               <ProtectedRoute path="/signout" component={Signout}/>
               <Route component={NotFound}/>
             </Switch>
-            <Footer/>
           </div>
-        </Router>
+          <Footer/>
+        </div>
+      </Router>
     );
   }
 }
@@ -47,16 +56,16 @@ class App extends React.Component {
  * @param {any} { component: Component, ...rest }
  */
 const ProtectedRoute = ({ component: Component, ...rest }) => (
-    <Route
-        {...rest}
-        render={(props) => {
-          const isLogged = Meteor.userId() !== null;
-          return isLogged ?
-              (<Component {...props} />) :
-              (<Redirect to={{ pathname: '/signin', state: { from: props.location } }}/>
-              );
-        }}
-    />
+  <Route
+    {...rest}
+    render={(props) => {
+      const isLogged = Meteor.userId() !== null;
+      return isLogged ?
+        (<Component {...props} />) :
+        (<Redirect to={{ pathname: '/signin', state: { from: props.location } }}/>
+        );
+    }}
+  />
 );
 
 /**
@@ -65,17 +74,17 @@ const ProtectedRoute = ({ component: Component, ...rest }) => (
  * @param {any} { component: Component, ...rest }
  */
 const AdminProtectedRoute = ({ component: Component, ...rest }) => (
-    <Route
-        {...rest}
-        render={(props) => {
-          const isLogged = Meteor.userId() !== null;
-          const isAdmin = Roles.userIsInRole(Meteor.userId(), 'admin');
-          return (isLogged && isAdmin) ?
-              (<Component {...props} />) :
-              (<Redirect to={{ pathname: '/signin', state: { from: props.location } }}/>
-              );
-        }}
-    />
+  <Route
+    {...rest}
+    render={(props) => {
+      const isLogged = Meteor.userId() !== null;
+      const isAdmin = Roles.userIsInRole(Meteor.userId(), 'admin');
+      return (isLogged && isAdmin) ?
+        (<Component {...props} />) :
+        (<Redirect to={{ pathname: '/signin', state: { from: props.location } }}/>
+        );
+    }}
+  />
 );
 
 /** Require a component and location to be passed to each ProtectedRoute. */
