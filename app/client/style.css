@@ -1,4 +1,8 @@
-.digits-background {
-  background: url('images/background.jpg') no-repeat center center fixed;
-  background-size: cover;
+.navbar-color{
+  background-color: "#000000" !important;
+}
+
+body {
+  background-image: url('images/background_LI.jpg') !important;
+  background-size: auto;
 }
