@@ -1,145 +1,56 @@
-![](https://raw.githubusercontent.com/ics-software-engineering/meteor-example-form-react/master/doc/create-student-page.png)
+<img src="doc/pic1.png">
 
-meteor-example-form-react is a sample Meteor 1.9 application that illustrates how to use [Uniforms](https://uniforms.tools/) for form development.
-
-Some of the features of this example:
-
-* In order to focus on form processing, the application has just two pages: Create Student and Edit Student.
-* A variety of common controllers are shown: text box, text area, single selection, multiple selection, date selection, and radio boxes.
-* Two customized versions of Uniform controllers illustrate how to extend the built-in Uniforms controllers.
-* The forms in this example update two Mongo collections, illustrating the situation where there is not a one-to-one correspondence between the collection schema and the form schema.
-* There is a 35 minute [YouTube screencast](https://www.youtube.com/watch?v=ZCHf_rNbDaM) providing a walkthrough of the code.
+Digits is an application that allows users to:
+<ul>
+  <li>Register an account.</li>
+  <li>Register an account.</li>
+  <li>Add a set of timestamped notes regarding their interactions with each contact.</li>
+</ul>
 
 ## Installation
+First, install Meteor.
 
-First, [install Meteor](https://www.meteor.com/install).
+Second, download a copy of Digits. Note that Digits is a private repo and so you will need to request permission from the author to gain access to the repo.
 
-Second, download this repository to your computer. You can download it as a zip file, or you can click the "Use as template" button to create your own copy of the system, then clone it to your local computer.
+Third, cd into the app directory install the required libraries with:
 
-Third, cd into the app/ directory of your local copy of the repo, and install third party libraries with:
-
-```
 $ meteor npm install
-```
+Once the libraries are installed, you can run the application by invoking:
 
-## Running the system
-
-Once the libraries are installed, you can run the application by invoking the "start" script in the [package.json file](https://github.com/ics-software-engineering/meteor-example-form-react/blob/master/app/package.json):
-
-
-```
-meteor npm run start
-
-> meteor-example-form-react@ start /Users/philipjohnson/github/ics-software-engineering/meteor-example-form-react/app
-> meteor --no-release-check --settings ../config/settings.development.json
-
-[[[[[ ~/github/ics-software-engineering/meteor-example-form-react/app ]]]]]
-
-=> Started proxy.
-=> Started MongoDB.
-W20190718-11:08:30.749(-10)? (STDERR) Note: you are using a pure-JavaScript implementation of bcrypt.
-W20190718-11:08:30.770(-10)? (STDERR) While this implementation will work correctly, it is known to be
-W20190718-11:08:30.771(-10)? (STDERR) approximately three times slower than the native implementation.
-W20190718-11:08:30.771(-10)? (STDERR) In order to use the native implementation instead, run
-W20190718-11:08:30.771(-10)? (STDERR)
-W20190718-11:08:30.771(-10)? (STDERR)   meteor npm install --save bcrypt
-W20190718-11:08:30.771(-10)? (STDERR)
-W20190718-11:08:30.771(-10)? (STDERR) in the root directory of your application.
-=> Started your app.
-
-=> App running at: http://localhost:3000/
-```
-
-
-### Note regarding "bcrypt warning":
-
-You will get the following message when you run this application:
-
-```
-Note: you are using a pure-JavaScript implementation of bcrypt.
-While this implementation will work correctly, it is known to be
-approximately three times slower than the native implementation.
-In order to use the native implementation instead, run
-
-  meteor npm install --save bcrypt
-
-in the root directory of your application.
-```
+$ meteor npm run start
 
 On some operating systems (particularly Windows), installing bcrypt is much more difficult than implied by the above message. Bcrypt is only used in Meteor for password checking, so the performance implications are negligible until your site has very high traffic. You can safely ignore this warning without any problems during initial stages of development.
 
-### Viewing the running app
+If all goes well, the template application will appear at http://localhost:3000. You can login using the credentials in settings.development.json, or else register a new account.
 
-If all goes well, the application will appear at [http://localhost:3000](http://localhost:3000).
+Lastly, you can run ESLint over the code in the imports/ directory with:
 
-### ESLint
-
-You can verify that the code obeys our coding standards by running ESLint over the code in the imports/ directory with:
-
-```
 meteor npm run lint
-```
 
-### Prerequisites
+## User Interface Walkthrough
+<h1>Landing Page</h1>
+<p>When you first bring up the application, you will see the landing page that provides a brief introduction to the capabilities of Digits:</p>
+<img src="doc/pic1.png">
 
-To best understand this application, it is useful to familiarize yourself with:
+<h1>Register</h1>
+<p>If you do not yet have an account on the system, you can register by clicking on “Login”, then “Sign Up”:</p>
+<img src="doc/pic2.png">
 
-* [Meteor Application Template React](http://ics-software-engineering.github.io/meteor-application-template-react/). This sample application illustrates conventions for directory layout, naming conventions, routing, integration of Semantic UI, and coding standards. Meteor-example-form is based on this template, so we won't discuss any of these issues here.
+<h1>Sign in</h1>
+<p>Click on the Login link, then click on the Signin link to bring up the Sign In page which allows you to login:</p>
+<img src="doc/pic2.png">
 
-* [Semantic UI React](https://react.semantic-ui.com/). We use Semantic UI for this template.
+<h1>Add Contact</h1>
+<p>After successfully logging in, the system takes you to your home page. It is just like the landing page, but the NavBar contains links to list contact and add new contacts:</p>
+<img src="doc/pic3.png">
 
-* [Uniforms](https://uniforms.tools/). Uniforms is a library for simplifying form management with React, and includes built-in integration with Semantic UI. It's worth reviewing [Managing forms in a Meteor/React project with the uniforms package](https://blog.meteor.com/managing-forms-in-a-meteor-react-project-with-uniforms-33d60602b43a) before looking at meteor-example-form-react.
+<h1>List Contacts</h1>
+<p>Clicking on the List Contacts link brings up a page that lists all of the contacts associated with the logged in user:</p>
+<img src="doc/pic4.png">
 
-## Walkthrough
+<h1>Edit Contacts</h1>
+<p>From the List Contacts page, the user can click the “Edit” link associated with any Contact to bring up a page that allows that Contact information to be edited:</p>
+<img src="doc/pic5.png">
 
-The landing page for this application provides the Create Student form:
-
-![](https://github.com/ics-software-engineering/meteor-example-form-react/raw/master/doc/create-student-page.png)
-
-This form has the following input controls:
-
-* Name and Email: text fields, both required.
-* Biographical statement: text area, optional.
-* Level: select field, required. Default is Freshman
-* GPA: select field, required. User must choose one.
-* Date enrolled: date field. Defaults to current time and day.
-* Hobbies: multiple select field (custom implementation of a Uniform controller, code is [here](https://github.com/ics-software-engineering/meteor-example-form-react/blob/master/app/imports/ui/forms/controllers/MultiSelectField.jsx)).
-* Major: select field implemented as Radio buttons (custom implementation to provide inline layout, code is [here](https://github.com/ics-software-engineering/meteor-example-form-react/blob/master/app/imports/ui/forms/controllers/RadioField.jsx)).
-
-A filled out but not yet submitted Create Student form looks like this:
-
-
-![](https://github.com/ics-software-engineering/meteor-example-form-react/raw/master/doc/create-student-page-filled-in.png)
-
-After submission, the page pops up an alert showing the submission was successful:
-
-![](https://github.com/ics-software-engineering/meteor-example-form-react/raw/master/doc/create-student-page-submitted.png)
-
-Also note that after dismissing the alert, there is a link of the Create Student page to a page where you can edit the document. Here is this page:
-
-![](https://github.com/ics-software-engineering/meteor-example-form-react/raw/master/doc/edit-student-page.png)
-
-You can edit the fields, then click 'Update' to save the changes.
-
-## Screencast
-
-Watch a 35 minute screencast explaining this system at [https://www.youtube.com/watch?v=ZCHf_rNbDaM](https://www.youtube.com/watch?v=ZCHf_rNbDaM).
-
-## About the uncaught Invariant Violation
-
-When trying to adapt this code to your own system, you may run into an "Uncaught Invariant Violation" error such as the following:
-
-```
-Uncaught Invariant Violation: Unrecognised schema: [object Object]
-    at invariant (http://localhost:3000/packages/modules.js?hash=47f8337f349efabcae6273a0f71bd738a87021b9:30144:15)
-    at createSchemaBridge (http://localhost:3000/packages/modules.js?hash=47f8337f349efabcae6273a0f71bd738a87021b9:106086:29)
-    at _class.BaseForm (http://localhost:3000/packages/modules.js?hash=47f8337f349efabcae6273a0f71bd738a87021b9:105699:50)
-```
-
-The reason for this error is that your code has not imported the Uniforms Simple Schema Bridge. You should include the following import statement in all files containing Uniforms-based forms:
-
-```
-import 'uniforms-bridge-simple-schema-2';
-```
-
-Including this import statement will fix the error.
+<h1>Admin mode</h1>
+<p>It is possible to designate one or more users as “Admins” through the settings file. When a user has the Admin role, they get access to a special NavBar link that retrieves a page listing all Contacts associated with all users:</p>

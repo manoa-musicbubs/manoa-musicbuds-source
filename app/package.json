@@ -1,5 +1,5 @@
 {
-  "name": "meteor-example-form-react",
+  "name": "meteor-application-template-react",
   "private": true,
   "dependencies": {
     "@babel/runtime": "^7.8.3",
