@@ -16,13 +16,13 @@ class NavBar extends React.Component {
           <Header inverted as='h1'>ManoaMusicBuds</Header>
         </Menu.Item>
         {this.props.currentUser ? (
-          <Menu.Item as={NavLink} activeClassName="active" exact to="/home" key='home'>Home</Menu.Item>
+          <Menu.Item as={NavLink} activeClassName="active" exact to="/home" key='home'>Your info</Menu.Item>
         ) : ''}
-        <Menu.Item as={NavLink} activeClassName="active" exact to="/profiles" key='profiles'>Profiles</Menu.Item>
+        <Menu.Item as={NavLink} activeClassName="active" exact to="/profiles" key='profiles'>Friends</Menu.Item>
         <Menu.Item as={NavLink} activeClassName="active" exact to="/projects" key='projects'>Projects</Menu.Item>
-        <Menu.Item as={NavLink} activeClassName="active" exact to="/interests" key='interests'>Interests</Menu.Item>
+        <Menu.Item as={NavLink} activeClassName="active" exact to="/interests" key='interests'>Taste</Menu.Item>
         <Menu.Item as={NavLink} activeClassName="active" exact to="/lucky" key='lucky'>
-          I&apos;m feeling lucky!</Menu.Item>
+          I&apos;m feeling chucky!</Menu.Item>
         {this.props.currentUser ? (
             [<Menu.Item as={NavLink} activeClassName="active" exact to="/addProject" key='addP'>Add Project</Menu.Item>,
             <Menu.Item as={NavLink} activeClassName="active" exact to="/filter" key='filter'>Filter</Menu.Item>]
