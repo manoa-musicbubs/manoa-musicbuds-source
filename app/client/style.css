@@ -1,22 +1,8 @@
-/* Custom site-wide CSS */
-
-.bowfolio-green {
-  color:  #376551;
+.navbar-color{
+  background-color: #000000 !important;
 }
 
-.landing-green-background {
-  background-color: #376551;
-  color: white;
-  padding-top: 20px;
-}
-
-.landing-white-background {
-  background-color: white;
-  color: #376551;
-  padding-top: 20px;
-}
-
-.reset-margins {
-  margin-top: 0;
-  margin-bottom: 0;
+body {
+  background-image: url('https://raw.githubusercontent.com/manoa-musicbubs/manoa-musicbuds-source/master/app/public/images/background_LI.jpg') !important;
+  background-size: auto;
 }
