@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cd609720-ee5a-493c-bfd5-5ac4aff480d4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/config/settings.done.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/imports/ui/components/NavBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/imports/ui/components/NavBar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/settings.done.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/settings.done.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,10 +31,11 @@
     <property name="settings.editor.selected.configurable" value="Console" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\yiwen\OneDrive\Documents\GitHub\manoa-musicbuds-source\config" />
       <recent name="C:\Users\yiwen\OneDrive\Documents\GitHub\my-bowfolios\app\public\images" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\yiwen\OneDrive\Documents\GitHub\my-bowfolios\app\public\images" />
     </key>
   </component>
@@ -51,7 +52,7 @@
       <workItem from="1587075037090" duration="251000" />
       <workItem from="1587076925655" duration="1203000" />
       <workItem from="1587078433720" duration="5334000" />
-      <workItem from="1587107002759" duration="324000" />
+      <workItem from="1587107002759" duration="1744000" />
     </task>
     <servers />
   </component>
