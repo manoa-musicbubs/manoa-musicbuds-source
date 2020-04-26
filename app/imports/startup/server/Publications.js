@@ -1,7 +1,9 @@
 import { Meteor } from 'meteor/meteor';
 import { interestsName, Interests } from '../../api/interests/Interests';
+import { instrumentsName, Instruments } from '../../api/instruments/instruments';
 import { profilesName, Profiles } from '../../api/profiles/Profiles';
 import { ProfilesInterests, profilesInterestsName } from '../../api/profiles/ProfilesInterests';
+import { ProfilesInstruments, profilesInstrumentsName} from '../../api/profiles/Profilesinstruments';
 import { ProfilesProjects, profilesProjectsName } from '../../api/profiles/ProfilesProjects';
 import { Projects, projectsName } from '../../api/projects/Projects';
 import { ProjectsInterests, projectsInterestsName } from '../../api/projects/ProjectsInterests';
@@ -9,11 +11,15 @@ import { ProjectsInterests, projectsInterestsName } from '../../api/projects/Pro
 /** Define a publication to publish all interests. */
 Meteor.publish(interestsName, () => Interests.find());
 
+Meteor.publish(instrumentsName, () => Instruments.find());
+
 /** Define a publication to publish all profiles. */
 Meteor.publish(profilesName, () => Profiles.find());
 
 /** Define a publication to publish this collection. */
 Meteor.publish(profilesInterestsName, () => ProfilesInterests.find());
+
+Meteor.publish(profilesInstrumentsName, () => ProfilesInstruments.find());
 
 /** Define a publication to publish this collection. */
 Meteor.publish(profilesProjectsName, () => ProfilesProjects.find());

@@ -51,20 +51,20 @@ class AddProject extends React.Component {
     return (
         <Grid container centered>
           <Grid.Column>
-            <Header as="h2" textAlign="center">Add Project</Header>
+            <Header as="h2" textAlign="center" inverted>Add Events</Header>
             <AutoForm ref={ref => { fRef = ref; }} schema={formSchema} onSubmit={data => this.submit(data, fRef)} >
               <Segment>
                 <Form.Group widths={'equal'}>
-                  <TextField name='name' showInlineError={true} placeholder='Project name'/>
-                  <TextField name='picture' showInlineError={true} placeholder='Project picture URL'/>
-                  <TextField name='homepage' showInlineError={true} placeholder='Homepage URL'/>
+                  <TextField name='name' showInlineError={true} placeholder='Events name'/>
+                  <TextField name='picture' showInlineError={true} placeholder='Event picture URL'/>
+                  <TextField name='homepage' showInlineError={true} placeholder='Events Homepage URL'/>
                 </Form.Group>
                 <LongTextField name='description' placeholder='Describe the project here'/>
                 <Form.Group widths={'equal'}>
-                  <MultiSelectField name='interests' showInlineError={true} placeholder={'Interests'}/>
-                  <MultiSelectField name='participants' showInlineError={true} placeholder={'Participants'}/>
+                  <MultiSelectField name='interests' showInlineError={true} placeholder={'Taste of Music'}/>
+                  <MultiSelectField name='participants' showInlineError={true} placeholder={'Who is in'}/>
                 </Form.Group>
-                <SubmitField value='Submit'/>
+                <SubmitField value='Find'/>
                 <ErrorsField/>
               </Segment>
             </AutoForm>

@@ -6,7 +6,9 @@ import { ProjectsInterests } from '../../api/projects/ProjectsInterests';
 import { Profiles } from '../../api/profiles/Profiles';
 import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
+import { ProfilesInstruments } from '../../api/profiles/Profilesinstruments';
 import { Interests } from '../../api/interests/Interests';
+import { Instruments } from '../../api/instruments/instruments';
 
 /* eslint-disable no-console */
 
@@ -23,8 +25,12 @@ function addInterest(interest) {
   Interests.update({ name: interest }, { $set: { name: interest } }, { upsert: true });
 }
 
+function addInstruments(instruments) {
+  Instruments.update({ name: instruments }, { $set: { name: instruments } }, { upsert: true });
+}
+
 /** Defines a new user and associated profile. Error if user already exists. */
-function addProfile({ firstName, lastName, bio, title, interests, projects, picture, email, role }) {
+function addProfile({ firstName, lastName, bio, title, interests, instruments, projects, picture, email, role }) {
   console.log(`Defining profile ${email}`);
   // Define the user in the Meteor accounts package.
   createUser(email, role);
@@ -32,9 +38,11 @@ function addProfile({ firstName, lastName, bio, title, interests, projects, pict
   Profiles.insert({ firstName, lastName, bio, title, picture, email });
   // Add interests and projects.
   interests.map(interest => ProfilesInterests.insert({ profile: email, interest }));
+  instruments.map(instruments => ProfilesInstruments.insert({ profile: email, instruments }));
   projects.map(project => ProfilesProjects.insert({ profile: email, project }));
   // Make sure interests are defined in the Interests collection if they weren't already.
   interests.map(interest => addInterest(interest));
+  instruments.map(instruments => addInstruments(instruments));
 }
 
 /** Define a new project. Error if project already exists.  */
