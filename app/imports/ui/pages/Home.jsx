@@ -10,23 +10,27 @@ import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import MultiSelectField from '../forms/controllers/MultiSelectField';
 import { Interests, interestsName } from '../../api/interests/Interests';
+import { Instruments, instrumentsName } from '../../api/instruments/instruments';
 import { Profiles, profilesName } from '../../api/profiles/Profiles';
 import { ProfilesInterests, profilesInterestsName } from '../../api/profiles/ProfilesInterests';
+import { ProfilesInstruments, profilesInstrumentsName} from '../../api/profiles/Profilesinstruments';
 import { ProfilesProjects, profilesProjectsName } from '../../api/profiles/ProfilesProjects';
 import { Projects, projectsName } from '../../api/projects/Projects';
 import { updateProfileMethod } from '../../startup/both/Methods';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
-const makeSchema = (allInterests, allProjects) => new SimpleSchema({
+const makeSchema = (allInterests, allProjects, allInstruments) => new SimpleSchema({
   email: { type: String, label: 'Email', optional: true },
   firstName: { type: String, label: 'First', optional: true },
   lastName: { type: String, label: 'Last', optional: true },
-  bio: { type: String, label: 'Biographical statement', optional: true },
-  title: { type: String, label: 'Title', optional: true },
-  picture: { type: String, label: 'Picture URL', optional: true },
-  interests: { type: Array, label: 'Interests', optional: true },
+  bio: { type: String, label: 'Goals and Dreams', optional: true },
+  title: { type: String, label: 'Contact Info', optional: true },
+  picture: { type: String, label: 'Icon', optional: true },
+  interests: { type: Array, label: 'Taste', optional: true },
   'interests.$': { type: String, allowedValues: allInterests },
-  projects: { type: Array, label: 'Projects', optional: true },
+  instruments: { type: Array, label: 'Taste', optional: true },
+  'instruments.$': { type: String, allowedValues: allInstruments },
+  projects: { type: Array, label: 'Events', optional: true },
   'projects.$': { type: String, allowedValues: allProjects },
 });
 
@@ -54,17 +58,19 @@ class Home extends React.Component {
     const email = Meteor.user().username;
     // Create the form schema for uniforms. Need to determine all interests and projects for muliselect list.
     const allInterests = _.pluck(Interests.find().fetch(), 'name');
+    const allInstruments = _.pluck(Instruments.find().fetch(), 'name');
     const allProjects = _.pluck(Projects.find().fetch(), 'name');
-    const formSchema = makeSchema(allInterests, allProjects);
+    const formSchema = makeSchema(allInterests, allProjects, allInstruments);
     // Now create the model with all the user information.
     const projects = _.pluck(ProfilesProjects.find({ profile: email }).fetch(), 'project');
     const interests = _.pluck(ProfilesInterests.find({ profile: email }).fetch(), 'interest');
+    const instruments = _.pluck(ProfilesInstruments.find({ profile: email }).fetch(), 'instruments');
     const profile = Profiles.findOne({ email });
-    const model = _.extend({}, profile, { interests, projects });
+    const model = _.extend({}, profile, { interests, instruments, projects });
     return (
       <Grid container centered>
         <Grid.Column>
-          <Header as="h2" textAlign="center">Your Profile</Header>
+          <Header as="h2" textAlign="center" inverted>Your Info</Header>
           <AutoForm model={model} schema={formSchema} onSubmit={data => this.submit(data)}>
             <Segment>
               <Form.Group widths={'equal'}>
@@ -72,16 +78,17 @@ class Home extends React.Component {
                 <TextField name='lastName' showInlineError={true} placeholder={'Last Name'}/>
                 <TextField name='email' showInlineError={true} placeholder={'email'} disabled/>
               </Form.Group>
-              <LongTextField name='bio' placeholder='Write a little bit about yourself.'/>
+              <LongTextField name='bio' placeholder='Talk about your dream or goal in music'/>
               <Form.Group widths={'equal'}>
-                <TextField name='title' showInlineError={true} placeholder={'Title'}/>
+                <TextField name='title' showInlineError={true} placeholder={'Phone number, etc'}/>
                 <TextField name='picture' showInlineError={true} placeholder={'URL to picture'}/>
               </Form.Group>
               <Form.Group widths={'equal'}>
-                <MultiSelectField name='interests' showInlineError={true} placeholder={'Interests'}/>
-                <MultiSelectField name='projects' showInlineError={true} placeholder={'Projects'}/>
+                <MultiSelectField name='interests' showInlineError={true} placeholder={'Taste of music'}/>
+                <MultiSelectField name='instruments' showInlineError={true} placeholder={'Instruments you play'}/>
+                <MultiSelectField name='projects' showInlineError={true} placeholder={'Events'}/>
               </Form.Group>
-              <SubmitField value='Update'/>
+              <SubmitField value='Change'/>
             </Segment>
           </AutoForm>
         </Grid.Column>
@@ -102,7 +109,9 @@ export default withTracker(() => {
   const sub3 = Meteor.subscribe(profilesInterestsName);
   const sub4 = Meteor.subscribe(profilesProjectsName);
   const sub5 = Meteor.subscribe(projectsName);
+  const sub6 = Meteor.subscribe(instrumentsName);
+  const sub7 = Meteor.subscribe(profilesInstrumentsName);
   return {
-    ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready() && sub5.ready(),
+    ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready() && sub5.ready() && sub6.ready() && sub7.ready(),
   };
 })(Home);

@@ -34,18 +34,20 @@ const MakeCard = (props) => (
       <Image floated='right' size='mini' src={props.profile.picture} />
       <Card.Header>{props.profile.firstName} {props.profile.lastName}</Card.Header>
       <Card.Meta>
-        <span className='date'>{props.profile.title}</span>
+        <span className='date'>{props.profile.email}</span>
       </Card.Meta>
       <Card.Description>
+        <Header as='h5'>Goal and Dream</Header>
         {props.profile.bio}
       </Card.Description>
     </Card.Content>
     <Card.Content extra>
+      <Header as='h5'>Taste of Music</Header>
       {_.map(props.profile.interests,
-        (interest, index) => <Label key={index} size='tiny' color='teal'>{interest}</Label>)}
+        (interest, index) => <Label key={index} size='tiny' color='black'>{interest}</Label>)}
     </Card.Content>
     <Card.Content extra>
-      <Header as='h5'>Projects</Header>
+      <Header as='h5'>Events</Header>
       {_.map(props.profile.projects, (project, index) => <Image key={index} size='mini' src={project}/>)}
     </Card.Content>
   </Card>
@@ -84,8 +86,8 @@ class Filter extends React.Component {
       <Container>
         <AutoForm schema={formSchema} onSubmit={data => this.submit(data)} >
           <Segment>
-            <MultiSelectField name='interests' showInlineError={true} placeholder={'Interests'}/>
-            <SubmitField value='Submit'/>
+            <MultiSelectField name='interests' showInlineError={true} placeholder={'Taste of Music'}/>
+            <SubmitField value='Find'/>
           </Segment>
         </AutoForm>
         <Card.Group style={{ paddingTop: '10px' }}>

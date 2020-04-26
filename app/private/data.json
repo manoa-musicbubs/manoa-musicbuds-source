@@ -1,16 +1,49 @@
 {
   "profiles": [
     {
-      "firstName": "Peter",
-      "lastName": "Leong",
-      "bio": "I am a professor of Educational Technology",
-      "title": "Professor",
+      "firstName": "Admin",
+      "lastName": "King",
+      "bio": "I am the king of this site",
+      "title": "king.com",
       "interests": [
-        "Online Learning"
+        "Jazz",
+        "Electronic Dance",
+        "Rock",
+        "Dubstep",
+        "Rhythm and Blues",
+        "Techono",
+        "Country Music",
+        "Electro",
+        "Indie Rock",
+        "Pop Music",
+        "Classical",
+        "K-Pop",
+        "Rap",
+        "Opera",
+        "Instrumental",
+        "Orchestra",
+        "Poplular music"
+      ],
+      "instruments": [
+        "Piano",
+        "Drums",
+        "Ukulele",
+        "Viola",
+        "Violin",
+        "Saxophone",
+        "Tuba",
+        "Guitar",
+        "Clarinet",
+        "Accordion",
+        "Guitar",
+        "Flute",
+        "Xylophone",
+        "Cymbal",
+        "Bongo",
+        "Banjo"
       ],
       "projects":[
-        "UH Online",
-        "RadGrad"
+        "JVNA"
       ],
       "picture": "https://www.radgrad.org/img/people/leong.jpg",
       "email": "peterleo@hawaii.edu"
@@ -18,11 +51,11 @@
   ],
   "projects": [
     {
-      "name": "UH Online",
-      "homepage": "https://www.uhonline.hawaii.edu/",
+      "name": "Fun",
+      "homepage": "google.com",
       "description": "Online learning opportunities at the University of Hawaii.",
       "interests": [
-        "Online Learning"
+        "JAZZ"
       ],
       "picture": "http://www.hawaii.edu/wp/wp-content/uploads/2015/12/system-seal.jpg"
     }

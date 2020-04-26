@@ -18,21 +18,22 @@ class NavBar extends React.Component {
         {this.props.currentUser ? (
           <Menu.Item as={NavLink} activeClassName="active" exact to="/home" key='home'>Your info</Menu.Item>
         ) : ''}
-        <Menu.Item as={NavLink} activeClassName="active" exact to="/profiles" key='profiles'>Friends</Menu.Item>
-        <Menu.Item as={NavLink} activeClassName="active" exact to="/projects" key='projects'>Projects</Menu.Item>
-        <Menu.Item as={NavLink} activeClassName="active" exact to="/interests" key='interests'>Taste</Menu.Item>
+        <Menu.Item as={NavLink} activeClassName="active" exact to="/profiles" key='profiles'>ALl Musicbubs</Menu.Item>
+        <Menu.Item as={NavLink} activeClassName="active" exact to="/projects" key='projects'>Events</Menu.Item>
+        <Menu.Item as={NavLink} activeClassName="active" exact to="/interests" key='interests'>Taste of Music</Menu.Item>
         <Menu.Item as={NavLink} activeClassName="active" exact to="/lucky" key='lucky'>
-          I&apos;m feeling chucky!</Menu.Item>
+          Feeling Lonely?</Menu.Item>
         {this.props.currentUser ? (
-            [<Menu.Item as={NavLink} activeClassName="active" exact to="/addProject" key='addP'>Add Project</Menu.Item>,
-            <Menu.Item as={NavLink} activeClassName="active" exact to="/filter" key='filter'>Filter</Menu.Item>]
+            [<Menu.Item as={NavLink} activeClassName="active" exact to="/addProject" key='addP'>Add Event</Menu.Item>,
+            <Menu.Item as={NavLink} activeClassName="active" exact to="/filter" key='filter'>Find Match</Menu.Item>,
+              <Menu.Item as={NavLink} activeClassName="active" exact to="/yourmusicbubs" key='yourmusicbubs'>Added Musicbubs</Menu.Item>]
         ) : ''}
         {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
             <Menu.Item as={NavLink} activeClassName="active" exact to="/admin" key='admin'>Admin</Menu.Item>
         ) : ''}
         <Menu.Item position="right">
           {this.props.currentUser === '' ? (
-            <Dropdown className='bowfolio-green' text="Login" pointing="top right" icon={'user'}>
+            <Dropdown text="Login" pointing="top right" icon={'user'}>
               <Dropdown.Menu>
                 <Dropdown.Item icon="user" text="Sign In" as={NavLink} exact to="/signin"/>
                 <Dropdown.Item icon="add user" text="Sign Up" as={NavLink} exact to="/signup"/>

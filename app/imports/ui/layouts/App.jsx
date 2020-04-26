@@ -16,6 +16,7 @@ import Filter from '../pages/Filter';
 import Interests from '../pages/Interests';
 import NotFound from '../pages/NotFound';
 import Signin from '../pages/Signin';
+import YourMusicBubs from '../pages/YourMusicBubs';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
 
@@ -37,6 +38,7 @@ class App extends React.Component {
               <Route path="/interests" component={Interests}/>
               <ProtectedRoute path="/addproject" component={AddProject}/>
               <ProtectedRoute path="/filter" component={Filter}/>
+              <ProtectedRoute path="/yourmusicbubs" component={YourMusicBubs}/>
               <Route path="/signin" component={Signin}/>
               <Route path="/signup" component={Signup}/>
               <ProtectedRoute path="/signout" component={Signout}/>
