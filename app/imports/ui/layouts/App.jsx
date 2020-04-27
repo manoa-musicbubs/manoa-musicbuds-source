@@ -26,9 +26,9 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <div>
+        <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
           <NavBar/>
-          <div style={{ paddingTop: '20px', paddingBottom: '30px' }}>
+          <div style={{ paddingTop: '20px', paddingBottom: '30px', flexGrow: 1 }}>
             <Switch>
               <Route exact path="/" component={Landing}/>
               <ProtectedRoute path="/home" component={Home}/>
