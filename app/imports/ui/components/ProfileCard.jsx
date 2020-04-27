@@ -1,10 +1,14 @@
-import React from 'react';
-import { Card, Image, Label, Header } from 'semantic-ui-react';
+import React, {remove} from 'react';
+import { Card, Image, Label, Header,Confirm, Button } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
+import {Profiles} from '../pages/Profiles';
+
 
 /** Component for layout out a Profile Card. */
+
 export const ProfileCard = (props) => (
+
   <Card>
     <Card.Content>
       <Image floated='right' size='mini' src={props.profile.picture} />
@@ -34,9 +38,16 @@ export const ProfileCard = (props) => (
       <Header as='h5'>Events</Header>
       {_.map(props.profile.projects, (project, index) => <Image key={index} size='mini' src={project}/>)}
     </Card.Content>
+
+    <Card.Content extra>
+      <Button icon onClick={() => removeItem(props.profile.email)}>Delete</Button>
+    </Card.Content>
+
   </Card>
 );
 
+
 ProfileCard.propTypes = {
   profile: PropTypes.object.isRequired,
+  profiles: PropTypes.object.isRequired,
 };
