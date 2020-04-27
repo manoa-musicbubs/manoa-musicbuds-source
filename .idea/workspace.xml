@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cd609720-ee5a-493c-bfd5-5ac4aff480d4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/imports/ui/components/ProfileCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/imports/ui/components/ProfileCard.jsx" afterDir="false" />
-    </list>
+    <list default="true" id="cd609720-ee5a-493c-bfd5-5ac4aff480d4" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -84,6 +81,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="ISSUE-7: DOYOUNG KIM" />
+    <option name="LAST_COMMIT_MESSAGE" value="ISSUE-7: DOYOUNG KIM" />
   </component>
   <component name="WindowStateProjectService">
     <state x="797" y="451" width="774" height="477" key="#ESLint" timestamp="1587883569762">
@@ -94,6 +93,10 @@
       <screen x="0" y="0" width="1857" height="1080" />
     </state>
     <state x="1073" y="345" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1857.1080@0.0.1857.1080" timestamp="1587891688261" />
+    <state x="297" y="0" key="CommitChangelistDialog2" timestamp="1587993571886">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="297" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1587993571886" />
     <state x="708" y="241" key="FileChooserDialogImpl" timestamp="1587878391570">
       <screen x="0" y="0" width="1857" height="1080" />
     </state>
