@@ -25,7 +25,7 @@ const makeSchema = (allInterests, allProjects, allInstruments) => new SimpleSche
   picture: { type: String, label: 'Icon', optional: true },
   interests: { type: Array, label: 'Taste', optional: true },
   'interests.$': { type: String, allowedValues: allInterests },
-  instruments: { type: Array, label: 'Taste', optional: true },
+  instruments: { type: Array, label: 'Instruments', optional: true },
   'instruments.$': { type: String, allowedValues: allInstruments },
   projects: { type: Array, label: 'Events', optional: true },
   'projects.$': { type: String, allowedValues: allProjects },
