@@ -18,7 +18,7 @@ class NavBar extends React.Component {
         {this.props.currentUser ? (
           <Menu.Item as={NavLink} activeClassName="active" exact to="/home" key='home'>Your info</Menu.Item>
         ) : ''}
-        <Menu.Item as={NavLink} activeClassName="active" exact to="/profiles" key='profiles'>ALl Musicbubs</Menu.Item>
+        <Menu.Item as={NavLink} activeClassName="active" exact to="/profiles" key='profiles'>All Musicbubs</Menu.Item>
         <Menu.Item as={NavLink} activeClassName="active" exact to="/projects" key='projects'>Events</Menu.Item>
         <Menu.Item as={NavLink} activeClassName="active" exact to="/interests" key='interests'>Taste of Music</Menu.Item>
         <Menu.Item as={NavLink} activeClassName="active" exact to="/lucky" key='lucky'>
