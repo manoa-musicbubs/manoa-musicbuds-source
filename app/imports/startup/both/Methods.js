@@ -1,9 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Projects } from '../../api/projects/Projects';
 import { Profiles } from '../../api/profiles/Profiles';
-import { ProfilesInterests } from '../../api/profiles/ProfilesInterests';
-import { ProfilesInstruments } from '../../api/profiles/Profilesinstruments';
-import { ProfilesProjects } from '../../api/profiles/ProfilesProjects';
 import { ProjectsInterests } from '../../api/projects/ProjectsInterests';
 
 /**
@@ -36,13 +33,7 @@ const updateProfileMethod = 'Profiles.update';
  */
 Meteor.methods({
   'Profiles.update'({ email, firstName, lastName, bio, title, picture, interests, instruments, projects }) {
-    Profiles.update({ email }, { $set: { email, firstName, lastName, bio, title, picture } });
-    ProfilesInterests.remove({ profile: email });
-    ProfilesInstruments.remove({ profile: email});
-    ProfilesProjects.remove({ profile: email });
-    interests.map((interest) => ProfilesInterests.insert({ profile: email, interest }));
-    instruments.map((instruments) => ProfilesInstruments.insert({ profile: email, instruments }));
-    projects.map((project) => ProfilesProjects.insert({ profile: email, project }));
+    Profiles.update({ email }, { $set: { email, firstName, lastName, bio, title, picture, interests, instruments, projects } });
   },
 });
 
@@ -50,12 +41,9 @@ const addProjectMethod = 'Projects.add';
 
 /** Creates a new project in the Projects collection, and also updates ProfilesProjects and ProjectsInterests. */
 Meteor.methods({
-  'Projects.add'({ name, description, picture, interests, participants, homepage }) {
+  'Projects.add'({ name, description, picture, interests, homepage }) {
     Projects.insert({ name, description, picture, homepage });
-    ProfilesProjects.remove({ project: name });
-    ProjectsInterests.remove({ project: name });
     interests.map((interest) => ProjectsInterests.insert({ project: name, interest }));
-    participants.map((participant) => ProfilesProjects.insert({ project: name, profile: participant }));
   },
 });
 

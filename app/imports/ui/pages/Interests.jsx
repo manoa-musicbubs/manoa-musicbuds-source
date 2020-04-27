@@ -6,15 +6,12 @@ import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
 import { interestsName, Interests } from '../../api/interests/Interests';
 import { Profiles, profilesName } from '../../api/profiles/Profiles';
-import { ProfilesInterests, profilesInterestsName } from '../../api/profiles/ProfilesInterests';
-import { profilesProjectsName } from '../../api/profiles/ProfilesProjects';
 import { Projects, projectsName } from '../../api/projects/Projects';
 import { ProjectsInterests, projectsInterestsName } from '../../api/projects/ProjectsInterests';
 
 /** Returns the Profiles and Projects associated with the passed Interest. */
 function getInterestData(name) {
-  const profiles = _.pluck(ProfilesInterests.find({ interest: name }).fetch(), 'profile');
-  const profilePictures = profiles.map(profile => Profiles.findOne({ email: profile }).picture);
+  const profilePictures = _.pluck(Profiles.find({ interests: { $all: [name] } }).fetch(), 'picture');
   const projects = _.pluck(ProjectsInterests.find({ interest: name }).fetch(), 'project');
   const projectPictures = projects.map(project => Projects.findOne({ name: project }).picture);
   // console.log(_.extend({ }, data, { interests, projects: projectPictures }));
@@ -67,13 +64,11 @@ InterestsPage.propTypes = {
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(() => {
   // Ensure that minimongo is populated with all collections prior to running render().
-  const sub1 = Meteor.subscribe(profilesProjectsName);
   const sub2 = Meteor.subscribe(projectsName);
   const sub3 = Meteor.subscribe(projectsInterestsName);
   const sub4 = Meteor.subscribe(profilesName);
   const sub5 = Meteor.subscribe(interestsName);
-  const sub6 = Meteor.subscribe(profilesInterestsName);
   return {
-    ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready() && sub5.ready() && sub6.ready(),
+    ready: sub2.ready() && sub3.ready() && sub4.ready() && sub5.ready(),
   };
 })(InterestsPage);

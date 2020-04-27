@@ -5,20 +5,16 @@ import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
 import { Profiles, profilesName } from '../../api/profiles/Profiles';
-import { ProfilesInterests, profilesInterestsName } from '../../api/profiles/ProfilesInterests';
-import { ProfilesInstruments, profilesInstrumentsName } from '../../api/profiles/Profilesinstruments';
-import { ProfilesProjects, profilesProjectsName } from '../../api/profiles/ProfilesProjects';
 import { Projects, projectsName } from '../../api/projects/Projects';
 import { ProfileCard } from '../components/ProfileCard';
 
 /** Returns the Profile and associated Projects and Interests associated with the passed user email. */
 function getProfileData(email) {
   const data = Profiles.findOne({ email });
-  const interests = _.pluck(ProfilesInterests.find({ profile: email }).fetch(), 'interest');
-  const instruments = _.pluck(ProfilesInstruments.find({ profile: email }).fetch(), 'instruments');
-  const projects = _.pluck(ProfilesProjects.find({ profile: email }).fetch(), 'project');
+  const { interests, instruments, projects } = data;
+
   const projectPictures = projects.map(project => Projects.findOne({ name: project }).picture);
-  // console.log(_.extend({ }, data, { interests, projects: projectPictures }));
+
   return _.extend({ }, data, { interests, instruments, projects: projectPictures });
 }
 
@@ -34,6 +30,7 @@ class LuckyPage extends React.Component {
   renderPage() {
     const email = _.sample(_.pluck(Profiles.find().fetch(), 'email'));
     const profileData = getProfileData(email);
+
     return (
       <Container>
         <Card.Group>
@@ -52,11 +49,8 @@ LuckyPage.propTypes = {
 export default withTracker(() => {
   // Ensure that minimongo is populated with all collections prior to running render().
   const sub1 = Meteor.subscribe(profilesName);
-  const sub2 = Meteor.subscribe(profilesInterestsName);
-  const sub3 = Meteor.subscribe(profilesInstrumentsName);
-  const sub4 = Meteor.subscribe(profilesProjectsName);
   const sub5 = Meteor.subscribe(projectsName);
   return {
-    ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready() && sub5.ready(),
+    ready: sub1.ready() && sub5.ready(),
   };
 })(LuckyPage);

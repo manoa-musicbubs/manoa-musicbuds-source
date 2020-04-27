@@ -12,20 +12,16 @@ import MultiSelectField from '../forms/controllers/MultiSelectField';
 import { addProjectMethod } from '../../startup/both/Methods';
 import { interestsName, Interests } from '../../api/interests/Interests';
 import { Profiles, profilesName } from '../../api/profiles/Profiles';
-import { profilesInterestsName } from '../../api/profiles/ProfilesInterests';
-import { profilesProjectsName } from '../../api/profiles/ProfilesProjects';
 import { projectsName } from '../../api/projects/Projects';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
-const makeSchema = (allInterests, allParticipants) => new SimpleSchema({
+const makeSchema = (allInterests) => new SimpleSchema({
   name: String,
   description: String,
   homepage: String,
   picture: String,
   interests: { type: Array, label: 'Interests', optional: true },
-  'interests.$': { type: String, allowedValues: allInterests },
-  participants: { type: Array, label: 'Participants', optional: true },
-  'participants.$': { type: String, allowedValues: allParticipants },
+  'interests.$': { type: String, allowedValues: allInterests }
 });
 
 /** Renders the Page for adding a document. */
@@ -46,8 +42,7 @@ class AddProject extends React.Component {
   render() {
     let fRef = null;
     const allInterests = _.pluck(Interests.find().fetch(), 'name');
-    const allParticipants = _.pluck(Profiles.find().fetch(), 'email');
-    const formSchema = makeSchema(allInterests, allParticipants);
+    const formSchema = makeSchema(allInterests);
     return (
         <Grid container centered>
           <Grid.Column>
@@ -62,9 +57,8 @@ class AddProject extends React.Component {
                 <LongTextField name='description' placeholder='Describe the project here'/>
                 <Form.Group widths={'equal'}>
                   <MultiSelectField name='interests' showInlineError={true} placeholder={'Taste of Music'}/>
-                  <MultiSelectField name='participants' showInlineError={true} placeholder={'Who is in'}/>
                 </Form.Group>
-                <SubmitField value='Find'/>
+                <SubmitField value='Add Event'/>
                 <ErrorsField/>
               </Segment>
             </AutoForm>
@@ -83,10 +77,8 @@ export default withTracker(() => {
   // Ensure that minimongo is populated with all collections prior to running render().
   const sub1 = Meteor.subscribe(interestsName);
   const sub2 = Meteor.subscribe(profilesName);
-  const sub3 = Meteor.subscribe(profilesInterestsName);
-  const sub4 = Meteor.subscribe(profilesProjectsName);
   const sub5 = Meteor.subscribe(projectsName);
   return {
-    ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready() && sub5.ready(),
+    ready: sub1.ready() && sub2.ready() && sub5.ready(),
   };
 })(AddProject);

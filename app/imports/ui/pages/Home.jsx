@@ -12,9 +12,6 @@ import MultiSelectField from '../forms/controllers/MultiSelectField';
 import { Interests, interestsName } from '../../api/interests/Interests';
 import { Instruments, instrumentsName } from '../../api/instruments/instruments';
 import { Profiles, profilesName } from '../../api/profiles/Profiles';
-import { ProfilesInterests, profilesInterestsName } from '../../api/profiles/ProfilesInterests';
-import { ProfilesInstruments, profilesInstrumentsName} from '../../api/profiles/Profilesinstruments';
-import { ProfilesProjects, profilesProjectsName } from '../../api/profiles/ProfilesProjects';
 import { Projects, projectsName } from '../../api/projects/Projects';
 import { updateProfileMethod } from '../../startup/both/Methods';
 
@@ -62,11 +59,8 @@ class Home extends React.Component {
     const allProjects = _.pluck(Projects.find().fetch(), 'name');
     const formSchema = makeSchema(allInterests, allProjects, allInstruments);
     // Now create the model with all the user information.
-    const projects = _.pluck(ProfilesProjects.find({ profile: email }).fetch(), 'project');
-    const interests = _.pluck(ProfilesInterests.find({ profile: email }).fetch(), 'interest');
-    const instruments = _.pluck(ProfilesInstruments.find({ profile: email }).fetch(), 'instruments');
     const profile = Profiles.findOne({ email });
-    const model = _.extend({}, profile, { interests, instruments, projects });
+    const model = _.extend({}, profile, { interests: profile.interests, instruments: profile.instruments, projects: profile.projects });
     return (
       <Grid container centered>
         <Grid.Column>
@@ -106,12 +100,9 @@ export default withTracker(() => {
   // Ensure that minimongo is populated with all collections prior to running render().
   const sub1 = Meteor.subscribe(interestsName);
   const sub2 = Meteor.subscribe(profilesName);
-  const sub3 = Meteor.subscribe(profilesInterestsName);
-  const sub4 = Meteor.subscribe(profilesProjectsName);
   const sub5 = Meteor.subscribe(projectsName);
   const sub6 = Meteor.subscribe(instrumentsName);
-  const sub7 = Meteor.subscribe(profilesInstrumentsName);
   return {
-    ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready() && sub5.ready() && sub6.ready() && sub7.ready(),
+    ready: sub1.ready() && sub2.ready() && sub5.ready() && sub6.ready(),
   };
 })(Home);
