@@ -12,6 +12,9 @@ import Profiles from '../pages/Profiles';
 import Lucky from '../pages/Lucky';
 import AddProject from '../pages/AddProject';
 import Projects from '../pages/Projects';
+import AddBand from '../pages/AddBand';
+import Bands from '../pages/Bands';
+import ManageBands from '../pages/ManageBands';
 import Filter from '../pages/Filter';
 import Interests from '../pages/Interests';
 import NotFound from '../pages/NotFound';
@@ -37,6 +40,9 @@ class App extends React.Component {
               <Route path="/lucky" component={Lucky}/>
               <Route path="/interests" component={Interests}/>
               <ProtectedRoute path="/addproject" component={AddProject}/>
+              <ProtectedRoute path="/addBand" component={AddBand}/>
+              <ProtectedRoute path="/bands" component={Bands}/>
+              <ProtectedRoute path="/manageBands" component={ManageBands}/>
               <ProtectedRoute path="/filter" component={Filter}/>
               <ProtectedRoute path="/yourmusicbubs" component={YourMusicBubs}/>
               <Route path="/signin" component={Signin}/>

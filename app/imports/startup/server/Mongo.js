@@ -4,6 +4,7 @@ import { Roles } from 'meteor/alanning:roles';
 import { Projects } from '../../api/projects/Projects';
 import { ProjectsInterests } from '../../api/projects/ProjectsInterests';
 import { Profiles } from '../../api/profiles/Profiles';
+import { Bands } from '../../api/bands/Bands';
 import { Interests } from '../../api/interests/Interests';
 import { Instruments } from '../../api/instruments/instruments';
 
