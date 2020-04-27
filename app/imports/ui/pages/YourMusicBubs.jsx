@@ -14,7 +14,8 @@ function getProfileData(email) {
   const { projects, interests } = data;
   const projectPictures = _.pluck(
     Projects.find({ name: { $in: projects } }).fetch(),
-    'picture');
+    'picture',
+  );
   // console.log(_.extend({ }, data, { interests, projects: projectPictures }));
   return _.extend({ }, data, { interests, projects: projectPictures });
 }

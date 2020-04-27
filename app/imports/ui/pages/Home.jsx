@@ -60,7 +60,11 @@ class Home extends React.Component {
     const formSchema = makeSchema(allInterests, allProjects, allInstruments);
     // Now create the model with all the user information.
     const profile = Profiles.findOne({ email });
-    const model = _.extend({}, profile, { interests: profile.interests, instruments: profile.instruments, projects: profile.projects });
+    const model = _.extend(
+      {},
+      profile,
+      { interests: profile.interests, instruments: profile.instruments, projects: profile.projects },
+    );
     return (
       <Grid container centered>
         <Grid.Column>

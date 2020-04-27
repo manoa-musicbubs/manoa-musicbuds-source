@@ -11,7 +11,6 @@ import PropTypes from 'prop-types';
 import MultiSelectField from '../forms/controllers/MultiSelectField';
 import { addProjectMethod } from '../../startup/both/Methods';
 import { interestsName, Interests } from '../../api/interests/Interests';
-import { Profiles, profilesName } from '../../api/profiles/Profiles';
 import { projectsName } from '../../api/projects/Projects';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
@@ -21,7 +20,7 @@ const makeSchema = (allInterests) => new SimpleSchema({
   homepage: String,
   picture: String,
   interests: { type: Array, label: 'Interests', optional: true },
-  'interests.$': { type: String, allowedValues: allInterests }
+  'interests.$': { type: String, allowedValues: allInterests },
 });
 
 /** Renders the Page for adding a document. */
@@ -76,9 +75,8 @@ AddProject.propTypes = {
 export default withTracker(() => {
   // Ensure that minimongo is populated with all collections prior to running render().
   const sub1 = Meteor.subscribe(interestsName);
-  const sub2 = Meteor.subscribe(profilesName);
   const sub5 = Meteor.subscribe(projectsName);
   return {
-    ready: sub1.ready() && sub2.ready() && sub5.ready(),
+    ready: sub1.ready() && sub5.ready(),
   };
 })(AddProject);

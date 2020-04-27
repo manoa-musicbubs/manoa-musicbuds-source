@@ -33,7 +33,19 @@ const updateProfileMethod = 'Profiles.update';
  */
 Meteor.methods({
   'Profiles.update'({ email, firstName, lastName, bio, title, picture, interests, instruments, projects }) {
-    Profiles.update({ email }, { $set: { email, firstName, lastName, bio, title, picture, interests, instruments, projects } });
+    Profiles.update(
+      { email },
+      { $set: {
+          email,
+          firstName, lastName,
+          bio,
+          title,
+          picture,
+          interests, instruments,
+          projects,
+        },
+      },
+    );
   },
 });
 

@@ -7,8 +7,6 @@ import { Profiles } from '../../api/profiles/Profiles';
 import { Interests } from '../../api/interests/Interests';
 import { Instruments } from '../../api/instruments/instruments';
 
-import { Accounts as AccountsServer } from 'meteor/accounts-base';
-
 const defaultProfile = ({ username }) => ({
   email: username,
   instruments: [],
@@ -16,7 +14,7 @@ const defaultProfile = ({ username }) => ({
   interests: [],
 });
 
-AccountsServer.onCreateUser((options, user) => {
+Accounts.onCreateUser((options, user) => {
   Profiles.insert(defaultProfile(user));
   return user;
 });
@@ -46,10 +44,20 @@ function addProfile({ firstName, lastName, bio, title, interests, instruments, p
   // Define the user in the Meteor accounts package.
   createUser(email, role);
   // Create the profile.
-  Profiles.update({ email }, { $set: { firstName, lastName, bio, title, picture, email, instruments, interests, projects } }, { upsert: true });
+  Profiles.update(
+    { email },
+    { $set: {
+      firstName, lastName,
+      bio,
+      title, picture, email,
+      instruments, interests,
+      projects } },
+    { upsert: true },
+  );
+
   // Make sure interests are defined in the Interests collection if they weren't already.
   interests.map(interest => addInterest(interest));
-  instruments.map(instruments => addInstruments(instruments));
+  instruments.map(addInstruments);
 }
 
 /** Define a new project. Error if project already exists.  */

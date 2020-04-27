@@ -20,11 +20,11 @@ const ProfileSchema = new SimpleSchema({
   title: { type: String, optional: true },
   picture: { type: String, optional: true },
   instruments: { type: Array, optional: true },
-  "instruments.$": { type: String },
+  'instruments.$': { type: String },
   interests: { type: Array, optional: true },
-  "interests.$": { type: String },
+  'interests.$': { type: String },
   projects: { type: Array, optional: true },
-  "projects.$": { type: String },
+  'projects.$': { type: String },
 }, { tracker: Tracker });
 
 /** Attach this schema to the collection. */

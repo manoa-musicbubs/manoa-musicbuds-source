@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Loader, Card, Image, Label, Header } from 'semantic-ui-react';
+import { Container, Loader, Card, Image, Header } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
@@ -13,7 +13,7 @@ function getProjectData(name) {
   const data = Projects.findOne({ name });
   const profilePictures = _.pluck(
     Profiles.find({ projects: { $all: [name] } }).fetch(),
-    'picture'
+    'picture',
   );
   const interests = _.pluck(ProjectsInterests.find({ project: name }).fetch(), 'interest');
 
@@ -76,6 +76,7 @@ export default withTracker(() => {
   const sub2 = Meteor.subscribe(projectsName);
   const sub3 = Meteor.subscribe(projectsInterestsName);
   const sub4 = Meteor.subscribe(profilesName);
+
   return {
     ready: sub2.ready() && sub3.ready() && sub4.ready(),
   };

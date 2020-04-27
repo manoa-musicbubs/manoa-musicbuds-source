@@ -91,17 +91,17 @@ class Filter extends React.Component {
     const allProfiles = Profiles.find({}).fetch();
 
     const interestsEmails = _.pluck(
-      (this.state.interests.length == 0 ?
+      (this.state.interests.length === 0 ?
         allProfiles :
-        Profiles.find({ interests: { $all:  this.state.interests } }).fetch()),
-      'email'
+        Profiles.find({ interests: { $all: this.state.interests } }).fetch()),
+      'email',
     );
 
     const instrumentsEmails = _.pluck(
-      (this.state.instruments.length == 0 ?
+      (this.state.instruments.length === 0 ?
         allProfiles :
-        Profiles.find({ instruments: { $all:  this.state.instruments } }).fetch()),
-      'email'
+        Profiles.find({ instruments: { $all: this.state.instruments } }).fetch()),
+      'email',
     );
 
     const length = this.state.instruments.length + this.state.interests.length;
