@@ -9,9 +9,6 @@ import { AutoForm, SubmitField } from 'uniforms-semantic';
 import { Interests, interestsName } from '../../api/interests/Interests';
 import { Instruments, instrumentsName } from '../../api/instruments/instruments';
 import { Profiles, profilesName } from '../../api/profiles/Profiles';
-import { ProfilesInterests, profilesInterestsName } from '../../api/profiles/ProfilesInterests';
-import { ProfilesInstruments, profilesInstrumentsName } from '../../api/profiles/Profilesinstruments';
-import { ProfilesProjects, profilesProjectsName } from '../../api/profiles/ProfilesProjects';
 import { Projects, projectsName } from '../../api/projects/Projects';
 import MultiSelectField from '../forms/controllers/MultiSelectField';
 
@@ -26,9 +23,7 @@ const makeSchema = (allInterests, allInstruments) => new SimpleSchema({
 
 function getProfileData(email) {
   const data = Profiles.findOne({ email });
-  const interests = _.pluck(ProfilesInterests.find({ profile: email }).fetch(), 'interest');
-  const instruments = _.pluck(ProfilesInstruments.find({ profile: email }).fetch(), 'instruments');
-  const projects = _.pluck(ProfilesProjects.find({ profile: email }).fetch(), 'project');
+  const { interests, instruments, projects } = data;
   const projectPictures = projects.map(project => Projects.findOne({ name: project }).picture);
   return _.extend({ }, data, { interests, projects: projectPictures, instruments });
 }
@@ -93,18 +88,27 @@ class Filter extends React.Component {
     const allInstruments = _.pluck(Instruments.find().fetch(), 'name');
     const formSchema = makeSchema(allInterests, allInstruments);
 
-    const interestsEmails = _.pluck(ProfilesInterests.find({ interest: { $in: this.state.interests } }).fetch(), 'profile');
-    const instrumentsEmails = _.pluck(ProfilesInstruments.find({ instruments: { $in: this.state.instruments } }).fetch(), 'profile');
+    const allProfiles = Profiles.find({}).fetch();
 
-    let emails = [];
-    if (interestsEmails.length > 0) {
-      emails = _.uniq([...emails, ...interestsEmails]);
-    }
-    if (instrumentsEmails.length > 0) {
-      emails = _.uniq([...emails, ...instrumentsEmails]);
-    }
+    const interestsEmails = _.pluck(
+      (this.state.interests.length == 0 ?
+        allProfiles :
+        Profiles.find({ interests: { $all:  this.state.interests } }).fetch()),
+      'email'
+    );
+
+    const instrumentsEmails = _.pluck(
+      (this.state.instruments.length == 0 ?
+        allProfiles :
+        Profiles.find({ instruments: { $all:  this.state.instruments } }).fetch()),
+      'email'
+    );
+
+    const length = this.state.instruments.length + this.state.interests.length;
+    const emails = length > 0 ? _.intersection(interestsEmails, instrumentsEmails) : [];
 
     const profileData = _.uniq(emails).map(email => getProfileData(email));
+
     return (
       <Container>
         <AutoForm schema={formSchema} onSubmit={data => this.submit(data)} >
@@ -131,13 +135,10 @@ Filter.propTypes = {
 export default withTracker(() => {
   // Ensure that minimongo is populated with all collections prior to running render().
   const sub1 = Meteor.subscribe(profilesName);
-  const sub2 = Meteor.subscribe(profilesInterestsName);
-  const sub3 = Meteor.subscribe(profilesProjectsName);
   const sub4 = Meteor.subscribe(projectsName);
   const sub5 = Meteor.subscribe(interestsName);
   const sub6 = Meteor.subscribe(instrumentsName);
-  const sub7 = Meteor.subscribe(profilesInstrumentsName);
   return {
-    ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready() && sub5.ready() && sub6.ready() && sub7.ready(),
+    ready: sub1.ready() && sub4.ready() && sub5.ready() && sub6.ready(),
   };
 })(Filter);
