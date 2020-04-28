@@ -8,6 +8,8 @@ import { Bands } from '../../api/bands/Bands';
 import { Interests } from '../../api/interests/Interests';
 import { Instruments } from '../../api/instruments/instruments';
 
+/* eslint-disable no-console */
+
 const defaultProfile = ({ username }) => ({
   email: username,
   instruments: [],
@@ -20,16 +22,6 @@ Accounts.onCreateUser((options, user) => {
   return user;
 });
 
-/* eslint-disable no-console */
-
-/** Define a user in the Meteor accounts package. This enables login. Username is the email address. */
-function createUser(email, role) {
-  const userID = Accounts.createUser({ username: email, email, password: 'foo' });
-  if (role === 'admin') {
-    Roles.addUsersToRoles(userID, 'admin');
-  }
-}
-
 /** Define an interest.  Has no effect if interest already exists. */
 function addInterest(interest) {
   Interests.update({ name: interest }, { $set: { name: interest } }, { upsert: true });
@@ -39,26 +31,37 @@ function addInstruments(instruments) {
   Instruments.update({ name: instruments }, { $set: { name: instruments } }, { upsert: true });
 }
 
-/** Defines a new user and associated profile. Error if user already exists. */
-function addProfile({ firstName, lastName, bio, title, interests, instruments, projects, picture, email, role }) {
-  console.log(`Defining profile ${email}`);
-  // Define the user in the Meteor accounts package.
-  createUser(email, role);
-  // Create the profile.
-  Profiles.update(
-    { email },
-    { $set: {
-      firstName, lastName,
-      bio,
-      title, picture, email,
-      instruments, interests,
-      projects } },
-    { upsert: true },
-  );
+/** Define a user in the Meteor accounts package. This enables login. Username is the email address. */
+function createUser(email, password, role, profile) {
+  const userID = Accounts.createUser({ username: email, email, password });
 
-  // Make sure interests are defined in the Interests collection if they weren't already.
-  interests.map(interest => addInterest(interest));
-  instruments.map(addInstruments);
+  if (role === 'admin') {
+    Roles.addUsersToRoles(userID, 'admin');
+  }
+
+  if (profile) {
+    Profiles.update(
+      { email },
+      { $set: { ...defaultProfile(email), ...profile, email } },
+      { upsert: true },
+    );
+
+    // Make sure interests are defined in the Interests collection if they weren't already.
+    profile.interests.map(addInterest);
+    profile.instruments.map(addInstruments);
+  }
+}
+
+if (Meteor.users.find().count() === 0) {
+  if (Meteor.settings.defaultAccounts) {
+    console.log('Creating the default user(s)');
+    Meteor.settings.defaultAccounts.map(({ email, password, role, profile }) => {
+      console.log(`creating user ${email}`);
+      createUser(email, password, role, profile);
+    });
+  } else {
+    console.log('Cannot initialize the database!  Please invoke meteor with a settings file.');
+  }
 }
 
 /** Define a new project. Error if project already exists.  */
@@ -72,13 +75,23 @@ function addProject({ name, homepage, description, interests, picture, participa
 
 /** Initialize DB if it appears to be empty (i.e. no users defined.) */
 if (Meteor.users.find().count() === 0) {
-  if (Meteor.settings.defaultProjects && Meteor.settings.defaultProfiles) {
-    console.log('Creating the default profiles');
-    Meteor.settings.defaultProfiles.map(profile => addProfile(profile));
+  if (Meteor.settings.defaultProjects) {
     console.log('Creating the default projects');
     Meteor.settings.defaultProjects.map(project => addProject(project));
   } else {
     console.log('Cannot initialize the database!  Please invoke meteor with a settings file.');
+  }
+
+  if (Meteor.settings.defaultInstruments) {
+    for (const instrument of Meteor.settings.defaultInstruments) {
+      addInstruments(instrument);
+    }
+  }
+
+  if (Meteor.settings.defaultInterests) {
+    for (const i of Meteor.settings.defaultInterests) {
+      addInterest(i);
+    }
   }
 }
 
@@ -94,6 +107,6 @@ if ((Meteor.settings.loadAssetsFile) && (Meteor.users.find().count() < 7)) {
   const assetsFileName = 'data.json';
   console.log(`Loading data from private/${assetsFileName}`);
   const jsonData = JSON.parse(Assets.getText(assetsFileName));
-  jsonData.profiles.map(profile => addProfile(profile));
+  //jsonData.profiles.map(profile => addProfile(profile));
   jsonData.projects.map(project => addProject(project));
 }
