@@ -1,3 +1,3 @@
 
 
-For details, please see http://bowfolios.github.io.
+For details, please see https://manoa-musicbubs.github.io/.
