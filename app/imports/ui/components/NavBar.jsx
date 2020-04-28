@@ -16,21 +16,28 @@ class NavBar extends React.Component {
           <Header inverted as='h1'>ManoaMusicBuds</Header>
         </Menu.Item>
         {this.props.currentUser ? (
-          <Menu.Item as={NavLink} activeClassName="active" exact to="/home" key='home'>Your info</Menu.Item>
+          <Menu.Item as={NavLink} activeClassName="active" exact to="/home" key='home'>Your Profile</Menu.Item>
         ) : ''}
-        <Menu.Item as={NavLink} activeClassName="active" exact to="/profiles" key='profiles'>All Musicbubs</Menu.Item>
-        <Menu.Item as={NavLink} activeClassName="active" exact to="/projects" key='projects'>Events</Menu.Item>
-        <Menu.Item as={NavLink} activeClassName="active" exact to="/interests" key='interests'>
-          Taste of Music
-        </Menu.Item>
-        <Menu.Item as={NavLink} activeClassName="active" exact to="/lucky" key='lucky'>
-          Feeling Lonely?</Menu.Item>
-        {this.props.currentUser ? (
-          [ <Menu.Item as={NavLink} activeClassName="active" exact to="/addProject" key='addP'>Add Event</Menu.Item>,
-            <Menu.Item as={NavLink} activeClassName="active" exact to="/filter" key='filter'>Find Match</Menu.Item>,
-            <Menu.Item as={NavLink} activeClassName="active" exact to="/yourmusicbubs" key='yourmusicbubs'>
-              Added Musicbubs
-            </Menu.Item>,
+
+          <Menu.Item>
+            <Dropdown text="Musicbuds" pointing="top right">
+              <Dropdown.Menu>
+                <Menu.Item as={NavLink} activeClassName="active" exact to="/profiles" key='profiles'>All Musicbubs</Menu.Item>
+                <Menu.Item as={NavLink} activeClassName="active" exact to="/filter" key='filter'>Find Match</Menu.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          </Menu.Item>
+
+          <Menu.Item>
+            <Dropdown text="Events" pointing="top right">
+              <Dropdown.Menu>
+                <Menu.Item as={NavLink} activeClassName="active" exact to="/projects" key='projects'>Events</Menu.Item>
+                  { this.props.currentUser ? <Menu.Item as={NavLink} activeClassName="active" exact to="/addProject" key='addP'>Add Event</Menu.Item> : null }
+              </Dropdown.Menu>
+            </Dropdown>
+          </Menu.Item>
+
+          { this.props.currentUser ?
             <Menu.Item>
               <Dropdown text="Bands" pointing="top right">
                 <Dropdown.Menu>
@@ -39,6 +46,19 @@ class NavBar extends React.Component {
                   <Menu.Item as={NavLink} activeClassName="active" exact to="/manageBands" key='manageBands'>Manage Bands</Menu.Item>
                 </Dropdown.Menu>
               </Dropdown>
+            </Menu.Item> :
+
+            <Menu.Item as={NavLink} activeClassName="active" exact to="/bands" key='bands'>All Bands</Menu.Item>
+          }
+
+        <Menu.Item as={NavLink} activeClassName="active" exact to="/interests" key='interests'>
+          Taste of Music
+        </Menu.Item>
+        <Menu.Item as={NavLink} activeClassName="active" exact to="/lucky" key='lucky'>
+          Feeling Lonely?</Menu.Item>
+        {this.props.currentUser ? (
+          [ <Menu.Item as={NavLink} activeClassName="active" exact to="/yourmusicbubs" key='yourmusicbubs'>
+              Added Musicbubs
             </Menu.Item>,
           ]
         ) : ''}

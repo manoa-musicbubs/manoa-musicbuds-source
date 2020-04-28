@@ -41,9 +41,9 @@ class App extends React.Component {
               <Route path="/interests" component={Interests}/>
               <ProtectedRoute path="/addproject" component={AddProject}/>
               <ProtectedRoute path="/addBand" component={AddBand}/>
-              <ProtectedRoute path="/bands" component={Bands}/>
+              <Route path="/bands" component={Bands}/>
               <ProtectedRoute path="/manageBands" component={ManageBands}/>
-              <ProtectedRoute path="/filter" component={Filter}/>
+              <Route path="/filter" component={Filter}/>
               <ProtectedRoute path="/yourmusicbubs" component={YourMusicBubs}/>
               <Route path="/signin" component={Signin}/>
               <Route path="/signup" component={Signup}/>
