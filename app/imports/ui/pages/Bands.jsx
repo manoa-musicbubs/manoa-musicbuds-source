@@ -24,30 +24,32 @@ const BandCard = ({ band }) => {
       <Header as='h5'>Interests</Header>
       {band.interests.map((interest, index) => <Label key={index} size='tiny' color='black'>{interest}</Label>)}
     </Card.Content>
-    <Card.Content extra>
-      <Header as='h5'>Apply</Header>
-      <Dropdown multiple selection placeholder={"Apply for position"} options={
-          band.positions.map(({name, instrument}) => ({
-            key: name, value: name, text: `${name} (${instrument})`,
-          })
-        )}
-        onChange={(_, data) => {
-          const { value } = data;
+    { Meteor.user() ?
+      <Card.Content extra>
+        <Header as='h5'>Apply</Header>
+        <Dropdown multiple selection placeholder={"Apply for position"} options={
+            band.positions.map(({name, instrument}) => ({
+              key: name, value: name, text: `${name} (${instrument})`,
+            })
+          )}
+          onChange={(_, data) => {
+            const { value } = data;
 
-          const profile = Profiles.findOne({ email: Meteor.user().username });
+            const profile = Profiles.findOne({ email: Meteor.user().username });
 
-          const applicants = [
-            ...(band.applicants.filter(x => x.profileId !== profile._id)),
-            ...(value.map(v => ({ profileId: profile._id, position: v }))),
-          ];
+            const applicants = [
+              ...(band.applicants.filter(x => x.profileId !== profile._id)),
+              ...(value.map(v => ({ profileId: profile._id, position: v }))),
+            ];
 
-          Bands.update(
-            { _id: band._id },
-            { $set: { applicants } },
-          );
-        }}
-      />
-    </Card.Content>
+            Bands.update(
+              { _id: band._id },
+              { $set: { applicants } },
+            );
+          }}
+        />
+      </Card.Content> :
+      null }
   </Card>;
 };
 
