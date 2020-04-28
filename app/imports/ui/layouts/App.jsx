@@ -29,9 +29,9 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-          <NavBar/>
-          <div style={{ paddingTop: '20px', paddingBottom: '30px', flexGrow: 1 }}>
+        <div style={{ overflow: 'hidden', display: 'flex', flexDirection: 'column', minHeight: '100vh', padding: 0 }}>
+          <NavBar style={{ flexGrow: 0 }} />
+          <div style={{ paddingTop: '20px', paddingBottom: '30px', flexGrow: 1, minHeight: 'calc(100% - 50px)' }}>
             <Switch>
               <Route exact path="/" component={Landing}/>
               <ProtectedRoute path="/home" component={Home}/>
@@ -51,7 +51,7 @@ class App extends React.Component {
               <Route component={NotFound}/>
             </Switch>
           </div>
-          <Footer/>
+          <Footer style={{ flexGrow: 0 }}/>
         </div>
       </Router>
     );
