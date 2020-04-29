@@ -1,24 +1,26 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Dropdown, Container, Loader, Card, Label, Header, Button } from 'semantic-ui-react';
+import { Dropdown, Container, Loader, Card, Label, Header } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
 import { Profiles, profilesName } from '../../api/profiles/Profiles';
 import { Bands, bandsName } from '../../api/bands/Bands';
 
-const BandCard = ({ band }) => {
-  return <Card>
+const BandCard = ({ band }) => (
+  <Card>
     <Card.Content>
       <Card.Header>{band.name}</Card.Header>
     </Card.Content>
       <Card.Content extra>
         <Header as='h5'>Positions</Header>
-        {band.positions.map((pos, index) =>
+        {band.positions.map((pos, index) => (
           pos.profileId ?
-          <Label key={index} size='tiny' color='black'>{pos.name} ({ Profiles.findOne({ _id: pos.profileId }).email })</Label> :
-          <Label key={index} size='tiny' color='black'>{pos.name}</Label>
-      )}
+            <Label key={index} size='tiny' color='black'>
+              {pos.name} ({ Profiles.findOne({ _id: pos.profileId }).email })
+            </Label> :
+            <Label key={index} size='tiny' color='black'>{pos.name}</Label>
+        ))}
       </Card.Content>
     <Card.Content extra>
       <Header as='h5'>Interests</Header>
@@ -27,12 +29,12 @@ const BandCard = ({ band }) => {
     { Meteor.user() ?
       <Card.Content extra>
         <Header as='h5'>Apply</Header>
-        <Dropdown multiple selection placeholder={"Apply for position"} options={
-            band.positions.map(({name, instrument}) => ({
+        <Dropdown multiple selection placeholder={'Apply for position'} options={
+            band.positions.map(({ name, instrument }) => ({
               key: name, value: name, text: `${name} (${instrument})`,
-            })
-          )}
-          onChange={(_, data) => {
+            }))
+          }
+          onChange={(event, data) => {
             const { value } = data;
 
             const profile = Profiles.findOne({ email: Meteor.user().username });
@@ -50,7 +52,11 @@ const BandCard = ({ band }) => {
         />
       </Card.Content> :
       null }
-  </Card>;
+  </Card>
+);
+
+BandCard.propTypes = {
+  band: PropTypes.object.isRequired,
 };
 
 /** Renders the Profile Collection as a set of Cards. */

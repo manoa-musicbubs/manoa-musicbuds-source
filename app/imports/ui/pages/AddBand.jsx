@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Segment, Header, Form } from 'semantic-ui-react';
-import { ListField, AutoForm, TextField, LongTextField, SubmitField, ErrorsField } from 'uniforms-semantic';
+import { ListField, AutoForm, TextField, SubmitField, ErrorsField } from 'uniforms-semantic';
 import swal from 'sweetalert';
 import 'uniforms-bridge-simple-schema-2'; // required for Uniforms
 import SimpleSchema from 'simpl-schema';
@@ -9,7 +9,6 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { _ } from 'meteor/underscore';
 import PropTypes from 'prop-types';
 import MultiSelectField from '../forms/controllers/MultiSelectField';
-import { addProjectMethod } from '../../startup/both/Methods';
 import { interestsName, Interests } from '../../api/interests/Interests';
 import { Instruments, instrumentsName } from '../../api/instruments/instruments';
 import { bandsName, Bands } from '../../api/bands/Bands';
@@ -30,19 +29,17 @@ class AddBand extends React.Component {
 
   /** On submit, insert the data. */
   submit({ name, positions, interests }, formRef) {
-    console.log(Meteor.profileId);
-    console.log(typeof(Meteor.profileId));
-    Bands.insert({ name, positions, interests, owner: Meteor.userId(), applicants: [] });
-    swal('Success', "Succesfully created Band");
-    /*
-    Meteor.call(addProjectMethod, data, (error) => {
-      if (error) {
-        swal('Error', error.message, 'error');
-      } else {
-        swal('Success', 'Project added successfully', 'success').then(() => formRef.reset());
-      }
-    });
-    */
+    Bands.insert(
+      { name, positions, interests, owner: Meteor.userId(), applicants: [] },
+      error => {
+        if (error) {
+          swal('Error', error.message, 'error');
+        } else {
+          swal('Success', 'Succesfully created Band', 'success')
+            .then(formRef.reset);
+        }
+      },
+    );
   }
 
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
@@ -50,7 +47,8 @@ class AddBand extends React.Component {
     let fRef = null;
     const allInterests = _.pluck(Interests.find().fetch(), 'name');
     const allInstruments = _.pluck(Instruments.find().fetch(), 'name');
-    const formSchema = makeSchema(allInterests);
+    const formSchema = makeSchema(allInterests, allInstruments);
+
     return (
         <Grid container centered>
           <Grid.Column>
