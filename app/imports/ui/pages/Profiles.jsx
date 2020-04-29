@@ -9,7 +9,7 @@ import { ProfilesInterests, profilesInterestsName } from '../../api/profiles/Pro
 import { ProfilesInstruments, profilesInstrumentsName} from '../../api/profiles/Profilesinstruments';
 import { ProfilesProjects, profilesProjectsName } from '../../api/profiles/ProfilesProjects';
 import { Projects, projectsName } from '../../api/projects/Projects';
-import { ProfileCard } from '../components/ProfileCard';
+import  ProfileCard  from '../components/ProfileCard';
 
 /** Returns the Profile and associated Projects and Interests associated with the passed user email. */
 function getProfileData(email) {
@@ -37,7 +37,7 @@ class ProfilesPage extends React.Component {
     return (
       <Container>
         <Card.Group>
-          {_.map(profileData, (profile, index) => <ProfileCard key={index} profile={profile}/>)}
+          {_.map(profileData, (profile, index) => <ProfileCard key={index} profile={profile} Profiles={Profiles}/>)}
         </Card.Group>
       </Container>
     );

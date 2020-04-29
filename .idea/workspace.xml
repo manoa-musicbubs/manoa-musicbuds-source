@@ -1,28 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cd609720-ee5a-493c-bfd5-5ac4aff480d4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/imports/api/instruments/instruments.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/imports/api/profiles/Profilesinstruments.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/imports/ui/pages/YourMusicBubs.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="db9ffb5d-3ecc-41be-868f-d6f3d9fc1fe0" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/imports/startup/both/Methods.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/imports/startup/both/Methods.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/imports/startup/server/Mongo.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/imports/startup/server/Mongo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/imports/startup/server/Publications.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/imports/startup/server/Publications.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/imports/ui/components/NavBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/imports/ui/components/NavBar.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/imports/ui/components/ProfileCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/imports/ui/components/ProfileCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/imports/ui/layouts/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/imports/ui/layouts/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/imports/ui/pages/AddProject.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/imports/ui/pages/AddProject.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/imports/ui/pages/Filter.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/imports/ui/pages/Filter.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/imports/ui/pages/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/imports/ui/pages/Home.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/imports/ui/pages/Lucky.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/imports/ui/pages/Lucky.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/imports/ui/pages/Profiles.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/imports/ui/pages/Profiles.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/imports/ui/pages/Projects.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/imports/ui/pages/Projects.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/private/data.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/private/data.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/settings.development.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/settings.development.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/imports/ui/pages/YourMusicBubs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/imports/ui/pages/YourMusicBubs.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,130 +17,17 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="JsFlowSettings">
-    <service-enabled>true</service-enabled>
-    <exe-path />
-    <other-services-enabled>true</other-services-enabled>
-    <auto-save>true</auto-save>
-  </component>
-  <component name="ProjectId" id="1ados4Og0TxcKIlzAVes0kf9a3v" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="1bCMCfmtkH3QZwUJSmSeWbS7kis" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="eslint.code.style.apply.dismiss" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/imports/api/instruments" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.standard" value="true" />
-    <property name="node.js.path.for.package.eslint" value="project" />
-    <property name="node.js.path.for.package.standard" value="project" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.standard" value="" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="settings.javascript.linters.eslint" />
-    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\IntelliJ IDEA 2019.3.4\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\yiwen\OneDrive\Documents\GitHub\manoa-musicbuds-source\app\imports\api\instruments" />
-      <recent name="C:\Users\yiwen\OneDrive\Documents\GitHub\manoa-musicbuds-source\app\imports\api\profiles" />
-      <recent name="C:\Users\yiwen\OneDrive\Documents\GitHub\manoa-musicbuds-source\app\imports\api\tool" />
-      <recent name="C:\Users\yiwen\OneDrive\Documents\GitHub\manoa-musicbuds-source\app\imports\api" />
-      <recent name="C:\Users\yiwen\OneDrive\Documents\GitHub\manoa-musicbuds-source\app\imports\ui\pages" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\yiwen\OneDrive\Documents\GitHub\my-bowfolios\app\public\images" />
-    </key>
-  </component>
-  <component name="SvnConfiguration">
-    <configuration />
-  </component>
-  <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="cd609720-ee5a-493c-bfd5-5ac4aff480d4" name="Default Changelist" comment="" />
-      <created>1587075034249</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1587075034249</updated>
-      <workItem from="1587075037090" duration="251000" />
-      <workItem from="1587076925655" duration="1203000" />
-      <workItem from="1587078433720" duration="5334000" />
-      <workItem from="1587107002759" duration="6837000" />
-      <workItem from="1587501868059" duration="81000" />
-      <workItem from="1587711538771" duration="37000" />
-      <workItem from="1587854217667" duration="492000" />
-      <workItem from="1587854718665" duration="5992000" />
-      <workItem from="1587878338960" duration="22533000" />
-    </task>
-    <servers />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="797" y="451" width="774" height="477" key="#ESLint" timestamp="1587883569762">
-      <screen x="0" y="0" width="1857" height="1080" />
-    </state>
-    <state x="797" y="451" width="774" height="477" key="#ESLint/0.0.1857.1080@0.0.1857.1080" timestamp="1587883569762" />
-    <state x="1073" y="345" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1587891688261">
-      <screen x="0" y="0" width="1857" height="1080" />
-    </state>
-    <state x="1073" y="345" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1857.1080@0.0.1857.1080" timestamp="1587891688261" />
-    <state x="708" y="241" key="FileChooserDialogImpl" timestamp="1587878391570">
-      <screen x="0" y="0" width="1857" height="1080" />
-    </state>
-    <state x="708" y="241" key="FileChooserDialogImpl/0.0.1857.1080@0.0.1857.1080" timestamp="1587878391570" />
-    <state width="1813" height="295" key="GridCell.Tab.0.bottom" timestamp="1587117826388">
-      <screen x="0" y="0" width="1856" height="1080" />
-    </state>
-    <state width="1813" height="295" key="GridCell.Tab.0.bottom/0.0.1856.1080@0.0.1856.1080" timestamp="1587117826388" />
-    <state width="1813" height="295" key="GridCell.Tab.0.center" timestamp="1587117826388">
-      <screen x="0" y="0" width="1856" height="1080" />
-    </state>
-    <state width="1813" height="295" key="GridCell.Tab.0.center/0.0.1856.1080@0.0.1856.1080" timestamp="1587117826388" />
-    <state width="1813" height="295" key="GridCell.Tab.0.left" timestamp="1587117826388">
-      <screen x="0" y="0" width="1856" height="1080" />
-    </state>
-    <state width="1813" height="295" key="GridCell.Tab.0.left/0.0.1856.1080@0.0.1856.1080" timestamp="1587117826388" />
-    <state width="1813" height="295" key="GridCell.Tab.0.right" timestamp="1587117826388">
-      <screen x="0" y="0" width="1856" height="1080" />
-    </state>
-    <state width="1813" height="295" key="GridCell.Tab.0.right/0.0.1856.1080@0.0.1856.1080" timestamp="1587117826388" />
-    <state x="593" y="244" key="NewModule_or_Project.wizard" timestamp="1587711569684">
-      <screen x="0" y="0" width="1857" height="1080" />
-    </state>
-    <state x="593" y="244" key="NewModule_or_Project.wizard/0.0.1857.1080@0.0.1857.1080" timestamp="1587711569684" />
-    <state x="429" y="185" key="SettingsEditor" timestamp="1587883562259">
-      <screen x="0" y="0" width="1857" height="1080" />
-    </state>
-    <state x="429" y="185" key="SettingsEditor/0.0.1857.1080@0.0.1857.1080" timestamp="1587883562259" />
-    <state x="238" y="118" width="1241" height="1067" key="dock-window-1" timestamp="1587902455325">
-      <screen x="0" y="0" width="1857" height="1080" />
-    </state>
-    <state x="238" y="118" width="1241" height="1067" key="dock-window-1/0.0.1857.1080@0.0.1857.1080" timestamp="1587902455325" />
-    <state x="636" y="275" width="798" height="582" key="find.popup" timestamp="1587902435014">
-      <screen x="0" y="0" width="1857" height="1080" />
-    </state>
-    <state x="636" y="275" width="798" height="582" key="find.popup/0.0.1857.1080@0.0.1857.1080" timestamp="1587902435014" />
-    <state x="622" y="223" key="new project wizard" timestamp="1587878393572">
-      <screen x="0" y="0" width="1857" height="1080" />
-    </state>
-    <state x="622" y="223" key="new project wizard/0.0.1857.1080@0.0.1857.1080" timestamp="1587878393572" />
-    <state x="650" y="442" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1587896603645">
-      <screen x="0" y="0" width="1857" height="1080" />
-    </state>
-    <state x="650" y="442" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1857.1080@0.0.1857.1080" timestamp="1587896603645" />
+    <option name="version" value="1" />
   </component>
 </project>
