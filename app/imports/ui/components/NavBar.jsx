@@ -19,15 +19,22 @@ const FullNavBar = props => {
 
           <Dropdown item text="Musicbuds">
             <Dropdown.Menu>
-              <Menu.Item as={NavLink} activeClassName="active" exact to="/profiles" key='profiles'>All Musicbubs</Menu.Item>
-              <Menu.Item as={NavLink} activeClassName="active" exact to="/filter" key='filter'>Find Match</Menu.Item>
+              <Menu.Item as={NavLink} activeClassName="active" exact to="/profiles" key='profiles'>
+                All Musicbubs
+              </Menu.Item>
+              <Menu.Item as={NavLink} activeClassName="active" exact to="/filter" key='filter'>
+                Find Match
+              </Menu.Item>
             </Dropdown.Menu>
           </Dropdown>
 
           <Dropdown item text="Events">
             <Dropdown.Menu>
               <Menu.Item as={NavLink} activeClassName="active" exact to="/projects" key='projects'>Events</Menu.Item>
-                { props.currentUser ? <Menu.Item as={NavLink} activeClassName="active" exact to="/addProject" key='addP'>Add Event</Menu.Item> : null }
+              { props.currentUser ? (
+                <Menu.Item as={NavLink} activeClassName="active" exact to="/addProject" key='addP'>
+                  Add Event
+                </Menu.Item>) : null }
             </Dropdown.Menu>
           </Dropdown>
 
@@ -35,12 +42,16 @@ const FullNavBar = props => {
               <Dropdown item text="Bands">
                 <Dropdown.Menu>
                   <Menu.Item as={NavLink} activeClassName="active" exact to="/bands" key='bands'>All Bands</Menu.Item>
-                  <Menu.Item as={NavLink} activeClassName="active" exact to="/addBand" key='addBand'>Add Band</Menu.Item>
-                  <Menu.Item as={NavLink} activeClassName="active" exact to="/manageBands" key='manageBands'>Manage Bands</Menu.Item>
+                  <Menu.Item as={NavLink} activeClassName="active" exact to="/addBand" key='addBand'>
+                    Add Band
+                  </Menu.Item>
+                  <Menu.Item as={NavLink} activeClassName="active" exact to="/manageBands" key='manageBands'>
+                    Manage Bands
+                  </Menu.Item>
                 </Dropdown.Menu>
               </Dropdown> :
 
-            <Menu.Item as={NavLink} activeClassName="active" exact to="/bands" key='bands'>All Bands</Menu.Item>
+              <Menu.Item as={NavLink} activeClassName="active" exact to="/bands" key='bands'>All Bands</Menu.Item>
           }
 
         <Dropdown item text="Misc">
@@ -53,12 +64,11 @@ const FullNavBar = props => {
               Feeling Lonely?
             </Dropdown.Item>
 
-            {props.currentUser ? (
-              [ <Dropdown.Item as={NavLink} activeClassName="active" exact to="/yourmusicbubs" key='yourmusicbubs'>
-                  Added Musicbubs
-                </Dropdown.Item>,
-              ]
-            ) : ''}
+            { props.currentUser ? (
+               <Dropdown.Item as={NavLink} activeClassName="active" exact to="/yourmusicbubs" key='yourmusicbubs'>
+                 Added Musicbubs
+               </Dropdown.Item>) : null }
+
           </Dropdown.Menu>
         </Dropdown>
 
@@ -81,7 +91,11 @@ const FullNavBar = props => {
           )}
       </Menu>
     );
-}
+};
+
+FullNavBar.propTypes = {
+  currentUser: PropTypes.string,
+};
 
 const MobileNavBar = props => {
     const menuStyle = { marginBottom: '0px' };
@@ -98,15 +112,26 @@ const MobileNavBar = props => {
           <Dropdown.Item as={NavLink} activeClassName="active" exact to="/home" key='home'>Your Profile</Dropdown.Item>
         ) : ''}
 
-        <Dropdown.Item as={NavLink} activeClassName="active" exact to="/profiles" key='profiles'>All Musicbubs</Dropdown.Item>
-        <Dropdown.Item as={NavLink} activeClassName="active" exact to="/filter" key='filter'>Find Match</Dropdown.Item>
+        <Dropdown.Item as={NavLink} activeClassName="active" exact to="/profiles" key='profiles'>
+          All Musicbubs
+        </Dropdown.Item>
+        <Dropdown.Item as={NavLink} activeClassName="active" exact to="/filter" key='filter'>
+          Find Match
+        </Dropdown.Item>
 
         <Dropdown.Item as={NavLink} activeClassName="active" exact to="/projects" key='projects'>Events</Dropdown.Item>
-        { props.currentUser ? <Dropdown.Item as={NavLink} activeClassName="active" exact to="/addProject" key='addP'>Add Event</Dropdown.Item> : null }
+          { props.currentUser ? <Dropdown.Item as={NavLink} activeClassName="active" exact to="/addProject" key='addP'>
+              Add Event
+            </Dropdown.Item> : null }
 
         <Dropdown.Item as={NavLink} activeClassName="active" exact to="/bands" key='bands'>All Bands</Dropdown.Item>
-        { props.currentUser ? <Dropdown.Item as={NavLink} activeClassName="active" exact to="/addBand" key='addBand'>Add Band</Dropdown.Item> : null }
-        { props.currentUser ? <Dropdown.Item as={NavLink} activeClassName="active" exact to="/manageBands" key='manageBands'>Manage Bands</Dropdown.Item> : null }
+          { props.currentUser ? <Dropdown.Item as={NavLink} activeClassName="active" exact to="/addBand" key='addBand'>
+            Add Band
+          </Dropdown.Item> : null }
+          { props.currentUser ? (
+            <Dropdown.Item as={NavLink} activeClassName="active" exact to="/manageBands" key='manageBands'>
+              Manage Bands
+            </Dropdown.Item>) : null }
 
         <Dropdown.Item as={NavLink} activeClassName="active" exact to="/interests" key='interests'>
           Taste of Music
@@ -117,25 +142,36 @@ const MobileNavBar = props => {
         </Dropdown.Item>
 
         {props.currentUser ? (
-          [ <Dropdown.Item as={NavLink} activeClassName="active" exact to="/yourmusicbubs" key='yourmusicbubs'>
-              Added Musicbubs
-            </Dropdown.Item>,
-          ]
-        ) : ''}
+          <Dropdown.Item as={NavLink} activeClassName="active" exact to="/yourmusicbubs" key='yourmusicbubs'>
+            Added Musicbubs
+          </Dropdown.Item>
+        ) : null}
 
         {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
             <Dropdown.Item as={NavLink} activeClassName="active" exact to="/admin" key='admin'>Admin</Dropdown.Item>
         ) : ''}
 
-          {props.currentUser === '' ? <Dropdown.Item icon="user" text="Sign In" as={NavLink} exact to="/signin"/> : null }
-          {props.currentUser === '' ? <Dropdown.Item icon="add user" text="Sign Up" as={NavLink} exact to="/signup"/> : null }
-          {props.currentUser !== '' ? <Dropdown.Item icon="sign out" text="Sign Out" as={NavLink} exact to="/signout"/> : null }
+        {props.currentUser === '' ? (
+          <Dropdown.Item icon="user" text="Sign In" as={NavLink} exact to="/signin"/>) :
+        null }
+
+        {props.currentUser === '' ? (
+          <Dropdown.Item icon="add user" text="Sign Up" as={NavLink} exact to="/signup"/>)
+        : null }
+
+        {props.currentUser !== '' ? (
+          <Dropdown.Item icon="sign out" text="Sign Out" as={NavLink} exact to="/signout"/>)
+        : null }
 
           </Dropdown.Menu>
         </Dropdown>
       </Menu>
     );
-}
+};
+
+MobileNavBar.propTypes = {
+  currentUser: PropTypes.string,
+};
 
 /** The NavBar appears at the top of every page. Rendered by the App Layout component. */
 class NavBar extends React.Component {

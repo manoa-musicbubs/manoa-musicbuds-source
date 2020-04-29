@@ -4,7 +4,6 @@ import { Roles } from 'meteor/alanning:roles';
 import { Projects } from '../../api/projects/Projects';
 import { ProjectsInterests } from '../../api/projects/ProjectsInterests';
 import { Profiles } from '../../api/profiles/Profiles';
-import { Bands } from '../../api/bands/Bands';
 import { Interests } from '../../api/interests/Interests';
 import { Instruments } from '../../api/instruments/instruments';
 
@@ -47,15 +46,15 @@ function createUser(email, password, role, profile) {
     );
 
     // Make sure interests are defined in the Interests collection if they weren't already.
-    profile.interests.map(addInterest);
-    profile.instruments.map(addInstruments);
+    profile.interests.forEach(addInterest);
+    profile.instruments.forEach(addInstruments);
   }
 }
 
 if (Meteor.users.find().count() === 0) {
   if (Meteor.settings.defaultAccounts) {
     console.log('Creating the default user(s)');
-    Meteor.settings.defaultAccounts.map(({ email, password, role, profile }) => {
+    Meteor.settings.defaultAccounts.forEach(({ email, password, role, profile }) => {
       console.log(`creating user ${email}`);
       createUser(email, password, role, profile);
     });
@@ -68,30 +67,26 @@ if (Meteor.users.find().count() === 0) {
 function addProject({ name, homepage, description, interests, picture, participants }) {
   console.log(`Defining project ${name}`);
   Projects.insert({ name, homepage, description, picture, participants });
-  interests.map(interest => ProjectsInterests.insert({ project: name, interest }));
+  interests.forEach(interest => ProjectsInterests.insert({ project: name, interest }));
   // Make sure interests are defined in the Interests collection if they weren't already.
-  interests.map(interest => addInterest(interest));
+  interests.forEach(addInterest);
 }
 
 /** Initialize DB if it appears to be empty (i.e. no users defined.) */
 if (Meteor.users.find().count() === 0) {
   if (Meteor.settings.defaultProjects) {
     console.log('Creating the default projects');
-    Meteor.settings.defaultProjects.map(project => addProject(project));
+    Meteor.settings.defaultProjects.forEach(addProject);
   } else {
     console.log('Cannot initialize the database!  Please invoke meteor with a settings file.');
   }
 
   if (Meteor.settings.defaultInstruments) {
-    for (const instrument of Meteor.settings.defaultInstruments) {
-      addInstruments(instrument);
-    }
+    Meteor.settings.defaultInstruments.foEach(addInstruments);
   }
 
   if (Meteor.settings.defaultInterests) {
-    for (const i of Meteor.settings.defaultInterests) {
-      addInterest(i);
-    }
+    Meteor.settings.defaultInterests.foEach(addInterest);
   }
 }
 
@@ -107,6 +102,5 @@ if ((Meteor.settings.loadAssetsFile) && (Meteor.users.find().count() < 7)) {
   const assetsFileName = 'data.json';
   console.log(`Loading data from private/${assetsFileName}`);
   const jsonData = JSON.parse(Assets.getText(assetsFileName));
-  //jsonData.profiles.map(profile => addProfile(profile));
-  jsonData.projects.map(project => addProject(project));
+  jsonData.projects.forEach(addProject);
 }
