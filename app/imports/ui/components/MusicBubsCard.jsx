@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { _ } from 'meteor/underscore';
 
 /** Component for layout out a Profile Card. */
-class ProfileCard extends React.Component {
+class MusicBubsCard extends React.Component {
 
   removeItem = (docID) => {
     console.log('item to delete is: ${docID}');
@@ -43,18 +43,14 @@ class ProfileCard extends React.Component {
       <Header as='h5'>Events</Header>
       {_.map(this.props.profile.projects, (project, index) => <Image key={index} size='mini' src={project}/>)}
     </Card.Content>
-    <Card.Content extra>
-      <Button>Add</Button>
-      <Button onClick={() => this.removeItem(this.props.profile._id)} floated='right'>Delete</Button>
-    </Card.Content>
   </Card>
     );
   }
 }
 
-ProfileCard.propTypes = {
+MusicBubsCard.propTypes = {
   profile: PropTypes.object.isRequired,
 };
 
 /** Wrap this component in withRouter since we use the <Link> React Router element. */
-export default withRouter(ProfileCard);
+export default withRouter(MusicBubsCard);

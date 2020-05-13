@@ -8,7 +8,7 @@ import { Profiles, profilesName } from '../../api/profiles/Profiles';
 import { ProfilesInterests, profilesInterestsName } from '../../api/profiles/ProfilesInterests';
 import { ProfilesProjects, profilesProjectsName } from '../../api/profiles/ProfilesProjects';
 import { Projects, projectsName } from '../../api/projects/Projects';
-import  ProfileCard  from '../components/ProfileCard';
+import  MusicBubsCard  from '../components/ProfileCard';
 
 /** Returns the Profile and associated Projects and Interests associated with the passed user email. */
 function getProfileData(email) {
@@ -21,7 +21,7 @@ function getProfileData(email) {
 }
 
 /** Renders the Profile Collection as a set of Cards. */
-class ProfilesPage extends React.Component {
+class MusicBubsPage extends React.Component {
 
   /** If the subscription(s) have been received, render the page, otherwise show a loading icon. */
   render() {
@@ -35,14 +35,14 @@ class ProfilesPage extends React.Component {
     return (
         <Container>
           <Card.Group>
-            {_.map(profileData, (profile, index) => <ProfileCard key={index} profile={profile} Profiles={Profiles}/>)}
+            {_.map(profileData, (profile, index) => <MusicBubsCard key={index} profile={profile} Profiles={Profiles}/>)}
           </Card.Group>
         </Container>
     );
   }
 }
 
-ProfilesPage.propTypes = {
+MusicBubsPage.propTypes = {
   ready: PropTypes.bool.isRequired,
 };
 
@@ -56,4 +56,4 @@ export default withTracker(() => {
   return {
     ready: sub1.ready() && sub2.ready() && sub3.ready() && sub4.ready(),
   };
-})(ProfilesPage);
+})(MusicBubsPage);

@@ -9,7 +9,7 @@ import { ProfilesInterests, profilesInterestsName } from '../../api/profiles/Pro
 import { ProfilesInstruments, profilesInstrumentsName } from '../../api/profiles/Profilesinstruments';
 import { ProfilesProjects, profilesProjectsName } from '../../api/profiles/ProfilesProjects';
 import { Projects, projectsName } from '../../api/projects/Projects';
-import { ProfileCard } from '../components/ProfileCard';
+import  ProfileCard  from '../components/ProfileCard';
 
 /** Returns the Profile and associated Projects and Interests associated with the passed user email. */
 function getProfileData(email) {

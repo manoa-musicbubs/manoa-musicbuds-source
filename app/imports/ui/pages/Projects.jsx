@@ -8,6 +8,7 @@ import { Profiles, profilesName } from '../../api/profiles/Profiles';
 import { ProfilesProjects, profilesProjectsName } from '../../api/profiles/ProfilesProjects';
 import { Projects, projectsName } from '../../api/projects/Projects';
 import { ProjectsInterests, projectsInterestsName } from '../../api/projects/ProjectsInterests';
+import ProjectCard from '../components/ProjectCard';
 
 /** Gets the Project data as well as Profiles and Interests associated with the passed Project name. */
 function getProjectData(name) {
@@ -17,30 +18,6 @@ function getProjectData(name) {
   const profilePictures = profiles.map(profile => Profiles.findOne({ email: profile }).picture);
   return _.extend({ }, data, { interests, participants: profilePictures });
 }
-
-/** Component for layout out a Project Card. */
-const MakeCard = (props) => (
-  <Card>
-    <Card.Content>
-      <Image floated='left' avatar src={props.project.picture}/>
-      <Card.Header style={{ marginTop: '0px' }}>{props.project.name}</Card.Header>
-      <Card.Meta>
-        <span className='date'>{props.project.homepage}</span>
-      </Card.Meta>
-      <Card.Description>
-        {props.project.description}
-      </Card.Description>
-    </Card.Content>
-    <Card.Content extra>
-      <Header as='h5'>Who is inside</Header>
-      {_.map(props.project.participants, (p, index) => <Image key={index} circular size='mini' src={p}/>)}
-    </Card.Content>
-  </Card>
-);
-
-MakeCard.propTypes = {
-  project: PropTypes.object.isRequired,
-};
 
 /** Renders the Project Collection as a set of Cards. */
 class ProjectsPage extends React.Component {
@@ -57,7 +34,7 @@ class ProjectsPage extends React.Component {
     return (
       <Container>
         <Card.Group>
-          {_.map(projectData, (project, index) => <MakeCard key={index} project={project}/>)}
+          {_.map(projectData, (project, index) => <ProjectCard key={index} project={project} Projects={Projects}/>)}
         </Card.Group>
       </Container>
     );
