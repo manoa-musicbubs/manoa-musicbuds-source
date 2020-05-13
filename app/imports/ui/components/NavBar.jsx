@@ -60,6 +60,10 @@ const FullNavBar = props => {
               Taste of Music
             </Dropdown.Item>
 
+            <Dropdown.Item as={NavLink} activeClassName="active" exact to="/addInterests" key='addInterests'>
+              Add Musical Tastes
+            </Dropdown.Item>
+
             <Dropdown.Item as={NavLink} activeClassName="active" exact to="/lucky" key='lucky'>
               Feeling Lonely?
             </Dropdown.Item>
@@ -135,6 +139,10 @@ const MobileNavBar = props => {
 
         <Dropdown.Item as={NavLink} activeClassName="active" exact to="/interests" key='interests'>
           Taste of Music
+        </Dropdown.Item>
+
+        <Dropdown.Item as={NavLink} activeClassName="active" exact to="/addInterests" key='addInterests'>
+          Add Musical Tastes
         </Dropdown.Item>
 
         <Dropdown.Item as={NavLink} activeClassName="active" exact to="/lucky" key='lucky'>
