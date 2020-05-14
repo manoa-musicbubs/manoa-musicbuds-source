@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { withRouter, NavLink } from 'react-router-dom';
-import { Responsive, Menu, Dropdown, Header } from 'semantic-ui-react';
+import { Responsive, Menu, Dropdown, Header, Icon } from 'semantic-ui-react';
 import { Roles } from 'meteor/alanning:roles';
 
 const FullNavBar = props => {
@@ -11,7 +11,7 @@ const FullNavBar = props => {
     return (
       <Menu style={menuStyle} attached="top" borderless inverted color='#016936'>
         <Menu.Item as={NavLink} activeClassName="" exact to="/">
-          <Header inverted as='h1'>ManoaMusicBuds</Header>
+          <Header inverted as='h1'><Icon name="music"></Icon>ManoaMusicBuds</Header>
         </Menu.Item>
         {props.currentUser ? (
           <Menu.Item as={NavLink} activeClassName="active" exact to="/home" key='home'>Your Profile</Menu.Item>
@@ -20,7 +20,7 @@ const FullNavBar = props => {
           <Dropdown item text="Musicbuds">
             <Dropdown.Menu>
               <Menu.Item as={NavLink} activeClassName="active" exact to="/profiles" key='profiles'>
-                All Musicbubs
+                <Icon name="plus"></Icon>All Musicbubs
               </Menu.Item>
               <Menu.Item as={NavLink} activeClassName="active" exact to="/filter" key='filter'>
                 Find Match
@@ -30,7 +30,7 @@ const FullNavBar = props => {
 
           <Dropdown item text="Events">
             <Dropdown.Menu>
-              <Menu.Item as={NavLink} activeClassName="active" exact to="/projects" key='projects'>Events</Menu.Item>
+              <Menu.Item as={NavLink} activeClassName="active" exact to="/projects" key='projects'><Icon name="heart outline"></Icon>Events</Menu.Item>
 
               { props.currentUser ? (
                 <Menu.Item as={NavLink} activeClassName="active" exact to="/addProject" key='addP'>
@@ -150,7 +150,7 @@ const MobileNavBar = props => {
             </Dropdown.Item>) : null }
 
         <Dropdown.Item as={NavLink} activeClassName="active" exact to="/interests" key='interests'>
-          Taste of Music
+          <Icon name="headphones"></Icon>Taste of Music
         </Dropdown.Item>
 
         <Dropdown.Item as={NavLink} activeClassName="active" exact to="/addInterests" key='addInterests'>
