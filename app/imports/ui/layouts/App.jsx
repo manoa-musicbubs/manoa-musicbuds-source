@@ -12,6 +12,7 @@ import Profiles from '../pages/Profiles';
 import Lucky from '../pages/Lucky';
 import AddProject from '../pages/AddProject';
 import Projects from '../pages/Projects';
+import UpcomingProjects from '../pages/UpcomingProjects';
 import AddBand from '../pages/AddBand';
 import Bands from '../pages/Bands';
 import ManageBands from '../pages/ManageBands';
@@ -38,6 +39,7 @@ class App extends React.Component {
               <ProtectedRoute path="/home" component={Home}/>
               <Route path="/profiles" component={Profiles}/>
               <Route path="/projects" component={Projects}/>
+              <Route path="/upcoming" component={UpcomingProjects}/>
               <Route path="/lucky" component={Lucky}/>
               <Route path="/interests" component={Interests}/>
               <Route path="/addInterests" component={addInterests}/>
