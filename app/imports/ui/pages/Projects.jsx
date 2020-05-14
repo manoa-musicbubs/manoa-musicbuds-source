@@ -27,9 +27,10 @@ const MakeCard = (props) => (
       <Image floated='left' avatar src={props.project.picture}/>
       <Card.Header style={{ marginTop: '0px' }}>{props.project.name}</Card.Header>
       <Card.Meta>
-        <span className='date'>{props.project.homepage}</span>
+        <span className='date'>{props.project.date ? `${props.project.date.toLocaleDateString()}` : "unkown date"}</span>
       </Card.Meta>
       <Card.Description>
+        <a href={props.project.homepage}>{props.project.homepage}</a><br />
         {props.project.description}
       </Card.Description>
     </Card.Content>

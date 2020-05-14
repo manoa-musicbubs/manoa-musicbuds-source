@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Segment, Header, Form } from 'semantic-ui-react';
-import { AutoForm, TextField, LongTextField, SubmitField, ErrorsField } from 'uniforms-semantic';
+import { AutoForm, DateField, TextField, LongTextField, SubmitField, ErrorsField } from 'uniforms-semantic';
 import swal from 'sweetalert';
 import 'uniforms-bridge-simple-schema-2'; // required for Uniforms
 import SimpleSchema from 'simpl-schema';
@@ -19,6 +19,7 @@ const makeSchema = (allInterests) => new SimpleSchema({
   description: String,
   homepage: String,
   picture: String,
+  date: Date,
   interests: { type: Array, label: 'Interests', optional: true },
   'interests.$': { type: String, allowedValues: allInterests },
 });
@@ -52,6 +53,7 @@ class AddProject extends React.Component {
                   <TextField name='name' showInlineError={true} placeholder='Events name'/>
                   <TextField name='picture' showInlineError={true} placeholder='Event picture URL'/>
                   <TextField name='homepage' showInlineError={true} placeholder='Events Homepage URL'/>
+                  <DateField name='date' showInlineError={true} placeholder='Event Date'/>
                 </Form.Group>
                 <LongTextField name='description' placeholder='Describe the project here'/>
                 <Form.Group widths={'equal'}>

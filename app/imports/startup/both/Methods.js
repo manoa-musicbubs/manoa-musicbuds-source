@@ -53,8 +53,8 @@ const addProjectMethod = 'Projects.add';
 
 /** Creates a new project in the Projects collection, and also updates ProfilesProjects and ProjectsInterests. */
 Meteor.methods({
-  'Projects.add'({ name, description, picture, interests, homepage }) {
-    Projects.insert({ name, description, picture, homepage });
+  'Projects.add'({ name, description, picture, interests, homepage, date }) {
+    Projects.insert({ name, description, picture, homepage, date });
     interests.map((interest) => ProjectsInterests.insert({ project: name, interest }));
   },
 });
