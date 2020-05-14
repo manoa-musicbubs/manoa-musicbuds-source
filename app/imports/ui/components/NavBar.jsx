@@ -31,10 +31,17 @@ const FullNavBar = props => {
           <Dropdown item text="Events">
             <Dropdown.Menu>
               <Menu.Item as={NavLink} activeClassName="active" exact to="/projects" key='projects'>Events</Menu.Item>
+
               { props.currentUser ? (
                 <Menu.Item as={NavLink} activeClassName="active" exact to="/addProject" key='addP'>
                   Add Event
                 </Menu.Item>) : null }
+
+              { props.currentUser ? (
+                <Menu.Item as={NavLink} activeClassName="active" exact to="/upcoming" key='upcoming'>
+                  Upcoming Events
+                </Menu.Item>) : null }
+
             </Dropdown.Menu>
           </Dropdown>
 
@@ -126,6 +133,10 @@ const MobileNavBar = props => {
         <Dropdown.Item as={NavLink} activeClassName="active" exact to="/projects" key='projects'>Events</Dropdown.Item>
           { props.currentUser ? <Dropdown.Item as={NavLink} activeClassName="active" exact to="/addProject" key='addP'>
               Add Event
+            </Dropdown.Item> : null }
+
+          { props.currentUser ? <Dropdown.Item as={NavLink} activeClassName="active" exact to="/upcoming" key='upcoming'>
+              Upcoming Events
             </Dropdown.Item> : null }
 
         <Dropdown.Item as={NavLink} activeClassName="active" exact to="/bands" key='bands'>All Bands</Dropdown.Item>
