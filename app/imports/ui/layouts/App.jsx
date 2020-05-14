@@ -22,6 +22,7 @@ import Signin from '../pages/Signin';
 import YourMusicBubs from '../pages/YourMusicBubs';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
+import ProfilesAdmin from '../pages/ProfilesAdmin';
 
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
@@ -48,6 +49,7 @@ class App extends React.Component {
               <Route path="/signin" component={Signin}/>
               <Route path="/signup" component={Signup}/>
               <ProtectedRoute path="/signout" component={Signout}/>
+              <AdminProtectedRoute path ="/Admin" component={ProfilesAdmin}/>
               <Route component={NotFound}/>
             </Switch>
           </div>

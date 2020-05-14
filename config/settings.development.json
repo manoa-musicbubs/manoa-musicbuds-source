@@ -48,6 +48,21 @@
         "interests": [ "Thrash Metal", "Rock" ],
         "instruments": [ "Guitar" ]
       }
+    },
+    {
+      "email": "john.hammet@metallica.com",
+      "password": "admin",
+      "role": "Admin",
+      "profile": {
+        "picture": "https://www.sfdcpoint.com/wp-content/uploads/2019/01/Salesforce-Admin-Interview-questions.png",
+        "firstName": "John",
+        "lastName": "Hammet",
+
+        "bio": "Admin",
+
+        "interests": [ "Thrash Metal", "Rock" ],
+        "instruments": [ "Guitar" ]
+      }
     }
   ]
 }
