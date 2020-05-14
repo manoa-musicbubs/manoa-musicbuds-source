@@ -52,13 +52,13 @@
     {
       "email": "john.hammet@metallica.com",
       "password": "admin",
-      "role": "Admin",
+      "role": "admin",
       "profile": {
         "picture": "https://www.sfdcpoint.com/wp-content/uploads/2019/01/Salesforce-Admin-Interview-questions.png",
         "firstName": "John",
         "lastName": "Hammet",
 
-        "bio": "Admin",
+        "bio": "Administrator",
 
         "interests": [ "Thrash Metal", "Rock" ],
         "instruments": [ "Guitar" ]
