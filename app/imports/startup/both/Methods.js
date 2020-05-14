@@ -30,8 +30,8 @@ import { ProjectsInterests } from '../../api/projects/ProjectsInterests';
 const updateProfileMethod = 'Profiles.update';
 
 /**
- * The server-side Profiles.update Meteor Method is called by the client-side Home page after pushing the update button.
- * Its purpose is to update the Profiles, ProfilesInterests, and ProfilesProjects collections to reflect the
+ * The server-side Musicbubs.update Meteor Method is called by the client-side Home page after pushing the update button.
+ * Its purpose is to update the Musicbubs, MusicbubsInterests, and MusicbubsProjects collections to reflect the
  * updated situation specified by the user.
  */
 Meteor.methods({
@@ -48,7 +48,7 @@ Meteor.methods({
 
 const addProjectMethod = 'Projects.add';
 
-/** Creates a new project in the Projects collection, and also updates ProfilesProjects and ProjectsInterests. */
+/** Creates a new project in the Projects collection, and also updates MusicbubsProjects and ProjectsInterests. */
 Meteor.methods({
   'Projects.add'({ name, description, picture, interests, participants, homepage }) {
     Projects.insert({ name, description, picture, homepage });

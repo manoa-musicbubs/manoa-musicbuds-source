@@ -45,7 +45,6 @@ class ProfileCard extends React.Component {
     </Card.Content>
     <Card.Content extra>
       <Button>Add</Button>
-      <Button onClick={() => this.removeItem(this.props.profile._id)} floated='right'>Delete</Button>
     </Card.Content>
   </Card>
     );

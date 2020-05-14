@@ -2,11 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="db9ffb5d-3ecc-41be-868f-d6f3d9fc1fe0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/imports/ui/components/MusicBubsCard.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/imports/ui/components/ProjectCard.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/imports/api/musicbubs/Musicbubs.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/imports/api/musicbubs/MusicbubsInterests.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/imports/api/musicbubs/MusicbubsProjects.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/imports/api/musicbubs/Musicbubsinstruments.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/imports/startup/both/Methods.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/imports/startup/both/Methods.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/imports/ui/components/MusicBubsCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/imports/ui/components/MusicBubsCard.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/imports/ui/components/ProfileCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/imports/ui/components/ProfileCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/imports/ui/pages/Lucky.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/imports/ui/pages/Lucky.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/imports/ui/pages/Interests.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/imports/ui/pages/Interests.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/imports/ui/pages/Projects.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/imports/ui/pages/Projects.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/imports/ui/pages/YourMusicBubs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/imports/ui/pages/YourMusicBubs.jsx" afterDir="false" />
     </list>
@@ -26,15 +30,22 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/imports/ui/components" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/imports/api" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\leyva\Documents\GitHub\manoa-musicbuds-source\app\imports\api" />
       <recent name="C:\Users\leyva\Documents\GitHub\manoa-musicbuds-source\app\imports\ui\components" />
     </key>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="682" y="413" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1589420798208">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="682" y="413" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1589420798208" />
   </component>
 </project>

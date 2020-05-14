@@ -43,6 +43,9 @@ class MusicBubsCard extends React.Component {
       <Header as='h5'>Events</Header>
       {_.map(this.props.profile.projects, (project, index) => <Image key={index} size='mini' src={project}/>)}
     </Card.Content>
+    <Card.Content extra>
+      <Button onClick={() => this.removeItem(this.props.profile._id)} floated='right'>Delete</Button>
+    </Card.Content>
   </Card>
     );
   }

@@ -8,7 +8,7 @@ import { Profiles, profilesName } from '../../api/profiles/Profiles';
 import { ProfilesInterests, profilesInterestsName } from '../../api/profiles/ProfilesInterests';
 import { ProfilesProjects, profilesProjectsName } from '../../api/profiles/ProfilesProjects';
 import { Projects, projectsName } from '../../api/projects/Projects';
-import  MusicBubsCard  from '../components/ProfileCard';
+import  MusicBubsCard  from '../components/MusicBubsCard';
 
 /** Returns the Profile and associated Projects and Interests associated with the passed user email. */
 function getProfileData(email) {

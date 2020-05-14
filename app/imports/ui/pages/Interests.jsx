@@ -11,7 +11,7 @@ import { profilesProjectsName } from '../../api/profiles/ProfilesProjects';
 import { Projects, projectsName } from '../../api/projects/Projects';
 import { ProjectsInterests, projectsInterestsName } from '../../api/projects/ProjectsInterests';
 
-/** Returns the Profiles and Projects associated with the passed Interest. */
+/** Returns the Musicbubs and Projects associated with the passed Interest. */
 function getInterestData(name) {
   const profiles = _.pluck(ProfilesInterests.find({ interest: name }).fetch(), 'profile');
   const profilePictures = profiles.map(profile => Profiles.findOne({ email: profile }).picture);

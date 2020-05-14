@@ -10,7 +10,7 @@ import { Projects, projectsName } from '../../api/projects/Projects';
 import { ProjectsInterests, projectsInterestsName } from '../../api/projects/ProjectsInterests';
 import ProjectCard from '../components/ProjectCard';
 
-/** Gets the Project data as well as Profiles and Interests associated with the passed Project name. */
+/** Gets the Project data as well as Musicbubs and Interests associated with the passed Project name. */
 function getProjectData(name) {
   const data = Projects.findOne({ name });
   const interests = _.pluck(ProjectsInterests.find({ project: name }).fetch(), 'interest');
