@@ -135,9 +135,10 @@ const MobileNavBar = props => {
               Add Event
             </Dropdown.Item> : null }
 
-          { props.currentUser ? <Dropdown.Item as={NavLink} activeClassName="active" exact to="/upcoming" key='upcoming'>
-              Upcoming Events
-            </Dropdown.Item> : null }
+          { props.currentUser ? <Dropdown.Item as={NavLink}
+            activeClassName="active" exact to="/upcoming" key='upcoming'>
+            Upcoming Events
+          </Dropdown.Item> : null }
 
         <Dropdown.Item as={NavLink} activeClassName="active" exact to="/bands" key='bands'>All Bands</Dropdown.Item>
           { props.currentUser ? <Dropdown.Item as={NavLink} activeClassName="active" exact to="/addBand" key='addBand'>

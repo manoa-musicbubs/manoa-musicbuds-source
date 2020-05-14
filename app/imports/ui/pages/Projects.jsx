@@ -1,49 +1,13 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Loader, Card, Image, Header } from 'semantic-ui-react';
+import { Container, Loader, Card } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { _ } from 'meteor/underscore';
-import { Profiles, profilesName } from '../../api/profiles/Profiles';
+import { profilesName } from '../../api/profiles/Profiles';
 import { Projects, projectsName } from '../../api/projects/Projects';
-import { ProjectsInterests, projectsInterestsName } from '../../api/projects/ProjectsInterests';
-
-/** Gets the Project data as well as Profiles and Interests associated with the passed Project name. */
-function getProjectData(name) {
-  const data = Projects.findOne({ name });
-  const profilePictures = _.pluck(
-    Profiles.find({ projects: { $all: [name] } }).fetch(),
-    'picture',
-  );
-  const interests = _.pluck(ProjectsInterests.find({ project: name }).fetch(), 'interest');
-
-  return _.extend({ }, data, { interests, participants: profilePictures });
-}
-
-/** Component for layout out a Project Card. */
-const MakeCard = (props) => (
-  <Card>
-    <Card.Content>
-      <Image floated='left' avatar src={props.project.picture}/>
-      <Card.Header style={{ marginTop: '0px' }}>{props.project.name}</Card.Header>
-      <Card.Meta>
-        <span className='date'>{props.project.date ? `${props.project.date.toLocaleDateString()}` : "unkown date"}</span>
-      </Card.Meta>
-      <Card.Description>
-        <a href={props.project.homepage}>{props.project.homepage}</a><br />
-        {props.project.description}
-      </Card.Description>
-    </Card.Content>
-    <Card.Content extra>
-      <Header as='h5'>Who is inside</Header>
-      {_.map(props.project.participants, (p, index) => <Image key={index} circular size='mini' src={p}/>)}
-    </Card.Content>
-  </Card>
-);
-
-MakeCard.propTypes = {
-  project: PropTypes.object.isRequired,
-};
+import { projectsInterestsName } from '../../api/projects/ProjectsInterests';
+import { ProjectCard, getProjectData } from '../components/ProjectCard.jsx';
 
 /** Renders the Project Collection as a set of Cards. */
 class ProjectsPage extends React.Component {
@@ -60,7 +24,7 @@ class ProjectsPage extends React.Component {
     return (
       <Container>
         <Card.Group>
-          {_.map(projectData, (project, index) => <MakeCard key={index} project={project}/>)}
+          {_.map(projectData, (project, index) => <ProjectCard key={index} project={project}/>)}
         </Card.Group>
       </Container>
     );
